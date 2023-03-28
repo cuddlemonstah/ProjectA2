@@ -6,12 +6,7 @@ public class LifeC : Collectibles
 {
     //!different invisible
     PlayerController player;
-    public override void sInvisible()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void isNotInvisible()
+    public override void Invisible()
     {
         throw new System.NotImplementedException();
     }

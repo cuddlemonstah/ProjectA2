@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     //!cache
     Rigidbody2D rigid;
+    public SpriteRenderer sprite;
     HealthBar HP;
     ManaBar Mana;
     public static event Action OnPlayerDeath;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5f;
     public float health, maxHP = 10f;
     public float mana, maxMana = 100f;
-    public bool isInvincible = false;
+    public bool isInvisible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         HP = FindObjectOfType<HealthBar>();
         Mana = FindObjectOfType<ManaBar>();
         rigid = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         HP.setMaxHP(maxHP);
         HP.setHP(maxHP);
         Mana.setMaxMana(maxMana);
@@ -51,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
     public void Health(float amount)
     {
-        if (isInvincible) return;
         health = Mathf.Clamp(health + amount, 0, maxHP);
         if (health <= 0)
         {
@@ -59,26 +60,31 @@ public class PlayerController : MonoBehaviour
             return;
         }
         HP.setHP(health);
-        StartCoroutine(BecomeTemporarilyInvincible());
-    }
-
-    public IEnumerator BecomeTemporarilyInvincible()
-    {
-        Debug.Log("Player turned invincible!");
-        isInvincible = true;
-        yield return new WaitForSeconds(1);
-        isInvincible = false;
-        Debug.Log("invincible! turned off");
-
     }
     public void damageDealer(float damage)
     {
         health -= damage;
         if (health <= 0)
         {
-            
+
             OnPlayerDeath?.Invoke();
         }
         HP.setHP(health);
+    }
+
+    public IEnumerator BecomeTemporarilyInvincible()
+    {
+        Color Invicolor1;
+        Color OGcolor2;
+
+        ColorUtility.TryParseHtmlString("#92C5D2", out Invicolor1);
+        ColorUtility.TryParseHtmlString("#A3D6AD", out OGcolor2);
+
+        GetComponent<Collider2D>().enabled = false;
+        sprite.color = Invicolor1;
+        yield return new WaitForSeconds(InviC.FindObjectOfType<InviC>().setInviTime());
+        GetComponent<Collider2D>().enabled = true;
+        sprite.color = OGcolor2;
+
     }
 }

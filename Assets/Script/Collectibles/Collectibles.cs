@@ -9,7 +9,7 @@ public abstract class Collectibles : MonoBehaviour
 
     public float lvlBarAdd;
 
-    public bool isInvisible;
+    public bool isInvisible = false;
     public float invisibleTime = 5f;
 
     //!either adds lvl or health
@@ -18,7 +18,6 @@ public abstract class Collectibles : MonoBehaviour
     public abstract void OnTriggerEnter2D(Collider2D other);
 
     //!different invisible
-    public abstract void sInvisible();
+    public abstract void Invisible();
 
-    public abstract void isNotInvisible();
 }
