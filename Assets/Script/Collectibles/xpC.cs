@@ -7,7 +7,13 @@ public class xpC : Collectibles
     PlayerController player;
     public override void add()
     {
+        for (int i = 1; i < player.playerCurrentLvl; i++)
+        {
+            XpAdd *= 1.2f;
+
+        }
         player.experienceAdd(XpAdd);
+        Debug.Log(XpAdd);
     }
 
     public override void Invisible()

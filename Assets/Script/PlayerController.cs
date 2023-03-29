@@ -11,15 +11,16 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sprite;
     HealthBar HP;
     ManaBar Mana;
+    XpBar XpBar;
     public static event Action OnPlayerDeath;
 
     //!Player stats
     public float health, maxHP = 10f;
     public float mana, maxMana = 100f;
-    public float playerMaxXp = 50f;
+    float playerMaxXp = 30f;
     public float playerCurrentXp;
     public int playerCurrentLvl;
-    public int playerMaxLvl = 50;
+    public int playerMaxLvl = 20;
     //!adjustments
     float vertical;
     float horizontal;
@@ -34,14 +35,23 @@ public class PlayerController : MonoBehaviour
         mana = maxMana;
         HP = FindObjectOfType<HealthBar>();
         Mana = FindObjectOfType<ManaBar>();
+        XpBar = FindObjectOfType<XpBar>();
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        UI();
+    }
+
+    void UI()
+    {
         HP.setMaxHP(maxHP);
         HP.setHP(maxHP);
         Mana.setMaxMana(maxMana);
         Mana.setMana(maxMana);
-    }
+        XpBar.setMaxXp(playerMaxXp);
+        XpBar.setXp(playerCurrentXp);
+        XpBar.setLvlText(playerCurrentLvl);
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -97,7 +107,18 @@ public class PlayerController : MonoBehaviour
     public void experienceAdd(float Xp)
     {
         playerCurrentXp += Xp;
-        Debug.Log(playerCurrentXp + "/" + playerMaxXp);
+        for (int i = playerCurrentLvl; playerCurrentXp >= playerMaxXp; i++)
+        {
+            playerCurrentXp = 0f;
+            playerMaxXp += 10f;
+            playerCurrentLvl += 1;
+            Debug.Log(playerCurrentXp);
+            Debug.Log(playerMaxXp);
+            Debug.Log(playerCurrentLvl);
+        }
+        XpBar.setMaxXp(playerMaxXp);
+        XpBar.setXp(playerCurrentXp);
+        XpBar.setLvlText(playerCurrentLvl);
     }
 
 }

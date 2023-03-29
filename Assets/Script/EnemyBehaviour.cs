@@ -24,7 +24,6 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(health);
 
         if (Vector2.Distance(transform.position, target.position) > infiniteDistance)
         {

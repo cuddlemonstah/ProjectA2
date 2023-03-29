@@ -48,7 +48,6 @@ public class ProjectileScript : MonoBehaviour
         //!Player Projectile to enemy
         if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
         {
-            Debug.Log(other);
             enemy.damageDealer(damage);
             Destroy(gameObject);
         }
