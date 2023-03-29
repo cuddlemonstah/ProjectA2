@@ -13,17 +13,23 @@ public class PlayerController : MonoBehaviour
     ManaBar Mana;
     public static event Action OnPlayerDeath;
 
+    //!Player stats
+    public float health, maxHP = 10f;
+    public float mana, maxMana = 100f;
+    public float playerMaxXp = 50f;
+    public float playerCurrentXp;
+    public int playerCurrentLvl;
+    public int playerMaxLvl = 50;
     //!adjustments
     float vertical;
     float horizontal;
     [SerializeField] float speed = 5f;
-    public float health, maxHP = 10f;
-    public float mana, maxMana = 100f;
     public bool isInvisible = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerCurrentLvl = 1;
         health = maxHP;
         mana = maxMana;
         HP = FindObjectOfType<HealthBar>();
@@ -87,4 +93,11 @@ public class PlayerController : MonoBehaviour
         sprite.color = OGcolor2;
 
     }
+
+    public void experienceAdd(float Xp)
+    {
+        playerCurrentXp += Xp;
+        Debug.Log(playerCurrentXp + "/" + playerMaxXp);
+    }
+
 }

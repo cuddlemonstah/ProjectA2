@@ -6,9 +6,7 @@ public abstract class Collectibles : MonoBehaviour
 {
 
     public float healthAdd;
-
-    public float lvlBarAdd;
-
+    public float XpAdd;
     public bool isInvisible = false;
     public float invisibleTime = 5f;
 
