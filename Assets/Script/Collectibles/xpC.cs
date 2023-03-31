@@ -9,7 +9,7 @@ public class xpC : Collectibles
     {
         for (int i = 1; i < player.playerCurrentLvl; i++)
         {
-            XpAdd *= 1.2f;
+            XpAdd *= 1.1f;
 
         }
         player.experienceAdd(XpAdd);

@@ -11,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     float infiniteDistance = 0f;
     public float damage;
     public float health;
+    public float giveXp = 0.5f;
 
 
     void Awake()
@@ -29,22 +30,27 @@ public class EnemyBehaviour : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
-        if (health <= 0f)
-        {
-            Destroy(gameObject);
-        }
     }
     public void damageDealer(float damage)
     {
         health -= damage;
+        if (health <= 0f)
+        {
+            Destroy(gameObject);
+            FindObjectOfType<PlayerController>().experienceAdd(giveXp);
+            for (int i = 1; i < FindObjectOfType<PlayerController>().playerCurrentLvl; i++)
+            {
+                giveXp *= 1.2f;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collided With: " + other);
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
             player.damageDealer(damage);
+            player.experienceAdd(giveXp);
             Destroy(gameObject);
         }
     }

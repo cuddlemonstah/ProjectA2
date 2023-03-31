@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         for (int i = playerCurrentLvl; playerCurrentXp >= playerMaxXp; i++)
         {
             playerCurrentXp = 0f;
-            playerMaxXp += 10f;
+            playerMaxXp *= 1.7f;
             playerCurrentLvl += 1;
             Debug.Log(playerCurrentXp);
             Debug.Log(playerMaxXp);
