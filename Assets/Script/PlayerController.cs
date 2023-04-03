@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     //!cache
     Rigidbody2D rigid;
-    public SpriteRenderer sprite;
+    SpriteRenderer sprite;
     HealthBar HP;
     ManaBar Mana;
     XpBar XpBar;
