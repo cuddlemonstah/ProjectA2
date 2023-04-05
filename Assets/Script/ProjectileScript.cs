@@ -42,7 +42,7 @@ public class ProjectileScript : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
 
         //!Player Projectile to enemy

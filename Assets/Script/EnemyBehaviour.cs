@@ -5,6 +5,10 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
 
+    //!cache
+    HealthBar HP;
+
+    //!attributes
     [SerializeField] float speed = 5f;
 
     Transform target;
@@ -17,10 +21,6 @@ public class EnemyBehaviour : MonoBehaviour
     void Awake()
     {
         target = GameObject.Find("Player").transform;
-    }
-    void Start()
-    {
-
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -54,5 +54,4 @@ public class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

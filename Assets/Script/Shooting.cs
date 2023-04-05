@@ -7,7 +7,8 @@ public class Shooting : MonoBehaviour
 
     private Camera mainCamera;
     private Vector3 mousePos;
-    public GameObject bullet;
+    [SerializeField]
+    private AttackStats attacks;
     public Transform bulletTransform;
     public bool canFire;
     private float timer;
@@ -36,10 +37,10 @@ public class Shooting : MonoBehaviour
                 timer = 0;
             }
         }
-        if (Input.GetMouseButtonDown(0) && canFire )
+        if (Input.GetMouseButtonDown(0) && canFire)
         {
             canFire = false;
-            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
         }
     }
 }
