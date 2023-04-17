@@ -9,18 +9,15 @@ public class ProjectileScript : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
+    public AttackStats atkstats;
 
     //!Enemy cache
     private GameObject player;
 
-    //!attributes?
-    public float force;
-    public float damage = 20f;
-
-
     // Start is called before the first frame update
     void Start()
     {
+        float force = atkstats.force;
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); //!camera
         rb = GetComponent<Rigidbody2D>();//!rigidbody
 
@@ -48,6 +45,7 @@ public class ProjectileScript : MonoBehaviour
         //!Player Projectile to enemy
         if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
         {
+            float damage = atkstats.skillDamage;
             enemy.damageDealer(damage);
             Destroy(gameObject);
         }

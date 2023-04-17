@@ -144,5 +144,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090f5e849532c634185d7e370a97d28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 15
-  damage: 20
+  atkstats: {fileID: 11400000, guid: a479e19c84807e645a4c512551f305fd, type: 2}
