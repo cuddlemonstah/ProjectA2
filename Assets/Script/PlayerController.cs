@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     ManaBar Mana;
     XpBar XpBar;
     public static event Action OnPlayerDeath;
+    public static event Action OnPlayerLevelUp;
 
     //!Player stats
     public float health, maxHP = 10f;
@@ -21,6 +22,12 @@ public class PlayerController : MonoBehaviour
     public float playerCurrentXp;
     public int playerCurrentLvl;
     public int playerMaxLvl = 20;
+
+    //!Player dash
+    public float dashSpeed;
+    public float dashLength = .3f, dashCooldown = 0.7f;
+    private float dashCounter;
+    private float dashCoolCounter;
     //!adjustments
     float vertical;
     float horizontal;
@@ -56,6 +63,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerWalk();
+        playerDash();
     }
 
     void PlayerWalk()
@@ -65,6 +73,34 @@ public class PlayerController : MonoBehaviour
 
         Vector2 move = new Vector2(vertical, horizontal);
         rigid.velocity = new Vector2(horizontal * speed, vertical * speed);
+    }
+
+    void playerDash()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (dashCoolCounter <= 0 && dashCounter <= 0)
+            {
+                speed = dashSpeed;
+                dashCounter = dashLength;
+                StartCoroutine(dashInvi());
+            }
+
+        }
+
+        if (dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
+            if (dashCounter <= 0)
+            {
+                speed = 5f;
+                dashCoolCounter = dashCooldown;
+            }
+        }
+        if (dashCoolCounter > 0)
+        {
+            dashCoolCounter -= Time.deltaTime;
+        }
     }
 
     public void Health(float amount)
@@ -88,6 +124,7 @@ public class PlayerController : MonoBehaviour
         HP.setHP(health);
     }
 
+    //!Invisible
     public IEnumerator BecomeTemporarilyInvincible()
     {
         Color Invicolor1;
@@ -104,21 +141,27 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //!Invisible in dashing
+    public IEnumerator dashInvi()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        yield return new WaitForSeconds(dashLength);
+        GetComponent<Collider2D>().enabled = true;
+    }
     public void experienceAdd(float Xp)
     {
         playerCurrentXp += Xp;
         for (int i = playerCurrentLvl; playerCurrentXp >= playerMaxXp; i++)
         {
+            OnPlayerLevelUp?.Invoke();
             playerCurrentXp = 0f;
             playerMaxXp *= 1.7f;
             playerCurrentLvl += 1;
-            Debug.Log(playerCurrentXp);
-            Debug.Log(playerMaxXp);
-            Debug.Log(playerCurrentLvl);
         }
         XpBar.setMaxXp(playerMaxXp);
         XpBar.setXp(playerCurrentXp);
         XpBar.setLvlText(playerCurrentLvl);
     }
+
 
 }

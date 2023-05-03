@@ -9,12 +9,14 @@ public class UIManager : MonoBehaviour
     public GameObject playerShooting;
     public GameObject pauseMenuUI;
     public GameObject gameOverMenu;
+    public GameObject lvlUPS;
     public static bool GameIsPaused = false;
 
     //!Death
     private void OnEnable()
     {
         PlayerController.OnPlayerDeath += EnableGameOverMEnu;
+        PlayerController.OnPlayerLevelUp += enableLvlUpMenu;
     }
     private void OnDisable()
     {
@@ -40,6 +42,12 @@ public class UIManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+    public void enableLvlUpMenu()
+    {
+        lvlUPS.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
     }
 
     //!Pause Menu
