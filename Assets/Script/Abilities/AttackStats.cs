@@ -10,4 +10,5 @@ public class AttackStats : ScriptableObject
     public Animation Anim;
     public float timeBetweenFiring;
     public GameObject bullet;
+    public int abilityLvl;
 }

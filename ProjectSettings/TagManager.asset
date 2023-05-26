@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Barrier
   - Collectibles
+  - Ability Sheet
   layers:
   - Default
   - TransparentFX
