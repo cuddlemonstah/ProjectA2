@@ -13,10 +13,12 @@ public class ProjectileScript : MonoBehaviour
 
     //!Enemy cache
     private GameObject player;
+    private PlayerController playercon;
 
     // Start is called before the first frame update
     void Start()
     {
+        playercon = FindObjectOfType<PlayerController>();
         float force = atkstats.force;
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); //!camera
         rb = GetComponent<Rigidbody2D>();//!rigidbody
@@ -45,9 +47,10 @@ public class ProjectileScript : MonoBehaviour
         //!Player Projectile to enemy
         if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
         {
-            float damage = atkstats.skillDamage;
+            float newDamage = atkstats.skillDamage + playercon.playerDamage;
+            float damage = newDamage;
             enemy.damageDealer(damage);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

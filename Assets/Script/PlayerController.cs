@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     //!Player stats
     public float health, maxHP = 10f;
     public float mana, maxMana = 100f;
+    public float playerDamage;
     float playerMaxXp = 30f;
     public float playerCurrentXp;
     public int playerCurrentLvl;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerCurrentLvl = 1;
+        playerDamage = 20f;
         health = maxHP;
         mana = maxMana;
         HP = FindObjectOfType<HealthBar>();
@@ -118,7 +120,6 @@ public class PlayerController : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-
             OnPlayerDeath?.Invoke();
         }
         HP.setHP(health);

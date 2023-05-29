@@ -23,6 +23,18 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (attacks.abilityLvl == 1 && attacks.activated == true)
+        {
+            magicLvl1();
+        }
+        else if (attacks.abilityLvl == 2 && attacks.activated == true)
+        {
+            magicLvl2();
+        }
+    }
+
+    void magicLvl1()
+    {
         mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3 rot = mousePos - transform.position;
         float rotZ = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
@@ -42,5 +54,38 @@ public class Shooting : MonoBehaviour
             canFire = false;
             Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
         }
+    }
+    void magicLvl2()
+    {
+        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 rot = mousePos - transform.position;
+        float rotZ = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+
+        if (!canFire)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeBetweenFiring)
+            {
+                canFire = true;
+                timer = 0;
+            }
+        }
+        if (Input.GetMouseButtonDown(0) && canFire)
+        {
+            canFire = false;
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+        }
+    }
+
+    void magicLvl3(){
+
+    }
+    void magicLvl4(){
+        
+    }
+    void magicLvl5(){
+        
     }
 }

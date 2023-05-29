@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090fe74129dc23e4aa1db6bd74dc723b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Atks:
+  - {fileID: 11400000, guid: 43c49de64d133c043aa43eef013806b4, type: 2}
+  - {fileID: 11400000, guid: a479e19c84807e645a4c512551f305fd, type: 2}

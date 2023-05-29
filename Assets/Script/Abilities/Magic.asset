@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddbb1018a35d4d49b04546cb866f93a, type: 3}
   m_Name: Magic
   m_EditorClassIdentifier: 
-  skillDamage: 20.2
+  skillDamage: 0
   force: 15.27
   Anim: {fileID: 0}
   timeBetweenFiring: 0.7
   bullet: {fileID: 113107254266721172, guid: c7973095caace8e439ff37c7b824def6, type: 3}
+  abilityLvl: 1
+  activated: 1

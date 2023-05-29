@@ -1176,7 +1176,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1106910073}
   m_HandleRect: {fileID: 0}
@@ -2368,7 +2368,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 7563871318343938031}
   m_HandleRect: {fileID: 0}
@@ -2555,7 +2555,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 7563871318750675094}
   m_HandleRect: {fileID: 0}
@@ -2702,6 +2702,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 1067155792}
   gameOverMenu: {fileID: 1875642877230511726}
   lvlUPS: {fileID: 1968307463}
+  isEnabled: 0
 --- !u!1001 &8478232279530015463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2757,6 +2758,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8695100879096083527, guid: 840c2050606b23a4ea895b3b2015742b, type: 3}
+      propertyPath: Atks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695100879096083527, guid: 840c2050606b23a4ea895b3b2015742b, type: 3}
+      propertyPath: Atks.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 43c49de64d133c043aa43eef013806b4, type: 2}
+    - target: {fileID: 8695100879096083527, guid: 840c2050606b23a4ea895b3b2015742b, type: 3}
+      propertyPath: Atks.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a479e19c84807e645a4c512551f305fd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 840c2050606b23a4ea895b3b2015742b, type: 3}
 --- !u!4 &1710000941061889074 stripped

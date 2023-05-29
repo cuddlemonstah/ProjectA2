@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject lvlUPS;
     public static bool GameIsPaused = false;
+    [SerializeField] public bool isEnabled = false;
 
     //!Death
     private void OnEnable()
@@ -45,6 +46,7 @@ public class UIManager : MonoBehaviour
     }
     public void enableLvlUpMenu()
     {
+        isEnabled = true;
         lvlUPS.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;

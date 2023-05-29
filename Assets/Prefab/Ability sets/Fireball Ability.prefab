@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 625221141941759058}
   - component: {fileID: 6857906353866949137}
   - component: {fileID: 2032391576842689718}
+  - component: {fileID: 3909269703394943896}
   m_Layer: 5
   m_Name: Fireball Ability
-  m_TagString: Untagged
+  m_TagString: Abilities
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3909269703394943896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345018087190318147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88a44f09d148bc4294ea8ca409008d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4669627889712376081
 GameObject:
   m_ObjectHideFlags: 0

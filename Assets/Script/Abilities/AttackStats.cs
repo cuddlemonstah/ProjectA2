@@ -11,4 +11,5 @@ public class AttackStats : ScriptableObject
     public float timeBetweenFiring;
     public GameObject bullet;
     public int abilityLvl;
+    public bool activated;
 }
