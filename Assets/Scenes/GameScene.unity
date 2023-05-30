@@ -321,6 +321,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireball: 0
+--- !u!114 &734989847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734989841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e526e17372e941b4a81e79922890eb42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xp:
+  - {fileID: 4726328807401737244, guid: 6786c2f88dcb78548bbe11075b4ad548, type: 3}
+  - {fileID: 7427418988357164183, guid: f3f460706ff2bda4998f5de09e5823ec, type: 3}
+  - {fileID: 4755201707541151204, guid: 1955e116347f7184a9ad3dd7c05c0e02, type: 3}
 --- !u!1001 &782360123
 PrefabInstance:
   m_ObjectHideFlags: 0

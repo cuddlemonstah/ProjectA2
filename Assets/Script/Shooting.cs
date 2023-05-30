@@ -74,18 +74,28 @@ public class Shooting : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canFire)
         {
             canFire = false;
-            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
-            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            StartCoroutine(anotherBullet());
+
         }
     }
 
-    void magicLvl3(){
+    void magicLvl3()
+    {
 
     }
-    void magicLvl4(){
-        
+    void magicLvl4()
+    {
+
     }
-    void magicLvl5(){
-        
+    void magicLvl5()
+    {
+
+    }
+
+    IEnumerator anotherBullet()
+    {
+        Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+        yield return new WaitForSeconds(.1f);
+        Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
     }
 }
