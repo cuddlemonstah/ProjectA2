@@ -16,6 +16,7 @@ public class InviC : Collectibles
         if (other.TryGetComponent<PlayerController>(out player))
         {
             Invisible();
+            func.currentInvi--;
             Destroy(gameObject);
         }
     }

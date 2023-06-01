@@ -25,8 +25,24 @@ public class xpC : Collectibles
     {
         if (other.TryGetComponent<PlayerController>(out player))
         {
-            add();
-            Destroy(gameObject);
+            switch (xpName)
+            {
+                case "Small":
+                    add();
+                    func.currentSmall--;
+                    Destroy(gameObject);
+                    break;
+                case "Medium":
+                    add();
+                    func.currentMedium--;
+                    Destroy(gameObject);
+                    break;
+                case "Large":
+                    add();
+                    func.currentLarge--;
+                    Destroy(gameObject);
+                    break;
+            }
         }
     }
 }

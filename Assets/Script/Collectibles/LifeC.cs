@@ -16,6 +16,7 @@ public class LifeC : Collectibles
         if (other.gameObject.TryGetComponent<PlayerController>(out player))
         {
             add();
+            func.currentLife--;
             Destroy(gameObject);
         }
     }
@@ -24,7 +25,6 @@ public class LifeC : Collectibles
         if (player.health < player.maxHP)
         {
             player.Health(healthAdd);
-            Debug.Log(player.health);
         }
     }
 }

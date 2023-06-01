@@ -23,7 +23,6 @@ public class InstantiateAbility : MonoBehaviour
                 randomNumber = Random.Range(0, ability.Count);
                 GameObject newA = Instantiate(ability[randomNumber], pos[i].position, transform.rotation);
                 newA.transform.SetParent(GameObject.FindGameObjectWithTag("Ability Sheet").transform, false);
-                Debug.Log(randomNumber);
             }
         }
     }
