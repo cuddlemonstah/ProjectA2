@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddbb1018a35d4d49b04546cb866f93a, type: 3}
   m_Name: Magic
   m_EditorClassIdentifier: 
+  attackName: Magic
   skillDamage: 0
   force: 15.27
   Anim: {fileID: 0}

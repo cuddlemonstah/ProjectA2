@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerActivatedAp : MonoBehaviour
 {
-    public bool fireball;
+    public bool Talents;
 
-    
+
 }

@@ -24,6 +24,20 @@ public class ActivateAp : MonoBehaviour
         resume();
     }
 
+    public void MagicOrb()
+    {
+        if (Atks[3].activated == false)
+        {
+            Atks[3].activated = true;
+            Atks[3].abilityLvl += 1;
+        }
+        else if (Atks[3].activated == true)
+        {
+            Atks[3].abilityLvl += 1;
+        }
+        resume();
+    }
+
     public void Magic()
     {
         Atks[1].abilityLvl += 1;

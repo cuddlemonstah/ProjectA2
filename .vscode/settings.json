@@ -52,5 +52,9 @@
     "temp/": true,
     "Temp/": true
   },
-  "cSpell.words": ["colour"]
+  "cSpell.words": [
+    "Behaviour",
+    "colour",
+    "Rigidbody"
+  ]
 }

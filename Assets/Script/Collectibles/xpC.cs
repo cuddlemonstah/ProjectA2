@@ -13,7 +13,6 @@ public class xpC : Collectibles
 
         }
         player.experienceAdd(XpAdd);
-        Debug.Log(XpAdd);
     }
 
     public override void Invisible()

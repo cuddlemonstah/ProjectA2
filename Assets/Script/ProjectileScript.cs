@@ -9,7 +9,7 @@ public class ProjectileScript : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
-    public AttackStats atkstats;
+    public AttackStats Default;
 
     //!Enemy cache
     private GameObject player;
@@ -19,7 +19,7 @@ public class ProjectileScript : MonoBehaviour
     void Start()
     {
         playercon = FindObjectOfType<PlayerController>();
-        float force = atkstats.force;
+        float force = Default.force;
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); //!camera
         rb = GetComponent<Rigidbody2D>();//!rigidbody
 
@@ -34,20 +34,13 @@ public class ProjectileScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
 
         //!Player Projectile to enemy
         if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
         {
-            float newDamage = atkstats.skillDamage + playercon.playerDamage;
+            float newDamage = Default.skillDamage + playercon.playerDamage;
             float damage = newDamage;
             enemy.damageDealer(damage);
             Destroy(this.gameObject);

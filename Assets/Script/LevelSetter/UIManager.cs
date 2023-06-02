@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     {
         PlayerController.OnPlayerDeath += EnableGameOverMEnu;
         PlayerController.OnPlayerLevelUp += enableLvlUpMenu;
+
     }
     private void OnDisable()
     {
@@ -26,11 +27,16 @@ public class UIManager : MonoBehaviour
     public void EnableGameOverMEnu()
     {
         gameOverMenu.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
     }
+
     public void RestartLevel()
     {
+        gameOverMenu.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
         SceneManager.LoadScene(1);
-        Resume();
     }
     public void MainMenu()
     {

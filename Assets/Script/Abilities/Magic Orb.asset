@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ddbb1018a35d4d49b04546cb866f93a, type: 3}
-  m_Name: Fireball
+  m_Name: Magic Orb
   m_EditorClassIdentifier: 
-  attackName: Fireball
-  skillDamage: 20
-  force: 7.08
+  attackName: Orb
+  skillDamage: 10
+  force: 0
+  rotationalSpeed: 1
   Anim: {fileID: 0}
-  timeBetweenFiring: 1.52
-  bullet: {fileID: 539782663058732315, guid: 8e3a5d8a1dc4729409a02c28dd7cf493, type: 3}
+  timeBetweenFiring: 0
+  bullet: {fileID: 2203031554316424413, guid: 1e53359dbf5b72c4785489a84477bcbb, type: 3}
   abilityLvl: 0
   activated: 0

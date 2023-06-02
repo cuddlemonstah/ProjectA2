@@ -17,19 +17,24 @@ public class Shooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        attacks.abilityLvl = 1;
+        attacks.activated = true;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (attacks.abilityLvl == 1 && attacks.activated == true)
+        if (attacks.attackName == "Magic")
         {
-            magicLvl1();
-        }
-        else if (attacks.abilityLvl == 2 && attacks.activated == true)
-        {
-            magicLvl2();
+            if (attacks.abilityLvl == 1 && attacks.activated == true)
+            {
+                magicLvl1();
+            }
+            else if (attacks.abilityLvl == 2 && attacks.activated == true)
+            {
+                magicLvl2();
+            }
         }
     }
 

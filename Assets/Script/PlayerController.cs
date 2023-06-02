@@ -120,6 +120,7 @@ public class PlayerController : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            Destroy(this.gameObject);
             OnPlayerDeath?.Invoke();
         }
         HP.setHP(health);
