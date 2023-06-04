@@ -9,6 +9,7 @@ TagManager:
   - Ability Sheet
   - Abilities
   - Enemy
+  - Rotational Pivot
   layers:
   - Default
   - TransparentFX

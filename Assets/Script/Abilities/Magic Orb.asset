@@ -15,9 +15,9 @@ MonoBehaviour:
   attackName: Orb
   skillDamage: 10
   force: 0
-  rotationalSpeed: 1
+  rotationalSpeed: 99.99
   Anim: {fileID: 0}
   timeBetweenFiring: 0
-  bullet: {fileID: 2203031554316424413, guid: 1e53359dbf5b72c4785489a84477bcbb, type: 3}
-  abilityLvl: 0
-  activated: 0
+  bullet: {fileID: 8291818094758167543, guid: 6d71d0beafe1351429554603f7400153, type: 3}
+  abilityLvl: 1
+  activated: 1

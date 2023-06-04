@@ -5,7 +5,8 @@ using UnityEngine;
 public class AbilityBehaviour : MonoBehaviour
 {
     public GameObject[] enemy;
-    public Transform parent;
+    public GameObject pivot;
+    public Transform MagicBallParent;
 
     //!Going to Change this to a list or an array when there are new abilities
     [SerializeField]
@@ -21,6 +22,7 @@ public class AbilityBehaviour : MonoBehaviour
             atk[i].activated = false;
         }
         StartCoroutine(insFireball());
+        //Instantiate(pivot, transform.position, Quaternion.identity, this.transform);
     }
     void Update()
     {
@@ -64,7 +66,7 @@ public class AbilityBehaviour : MonoBehaviour
             {
                 if (atk[1].abilityLvl == 1)
                 {
-                    Instantiate(atk[1].bullet, new Vector3(x, y, z), Quaternion.identity, parent);
+                    Instantiate(atk[1].bullet, new Vector3(2, 2, 0), Quaternion.identity, MagicBallParent);
                     yield return new WaitForSeconds(100f);
                 }
             }
@@ -80,7 +82,7 @@ public class AbilityBehaviour : MonoBehaviour
         {
             if (atk[1].abilityLvl == 1)
             {
-                Instantiate(atk[1].bullet, new Vector3(0, 0, 1), Quaternion.identity, parent);
+                Instantiate(atk[1].bullet, new Vector3(2, 2, 0), Quaternion.identity, this.transform);
             }
         }
     }

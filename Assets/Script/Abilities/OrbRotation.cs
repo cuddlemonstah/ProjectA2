@@ -5,8 +5,9 @@ using UnityEngine;
 public class OrbRotation : MonoBehaviour
 {
     public AttackStats attack;
-    public GameObject pivot;
     private PlayerController playercon;
+    Vector3 currentEulerAngles;
+    public Transform pivot;
 
     // Start is called before the first frame update
     void Start()
@@ -17,9 +18,8 @@ public class OrbRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(pivot.transform.position, new Vector3(0, 0, 1), attack.rotationalSpeed + Time.deltaTime);
-        Mathf.Clamp(this.transform.position.x, -2f, 2f);
-        Mathf.Clamp(this.transform.position.y, -2f, 2f);
+        currentEulerAngles += new Vector3(0, 0, 1) * Time.deltaTime * attack.rotationalSpeed;
+        pivot.localEulerAngles = currentEulerAngles;
     }
 
     void OnTriggerEnter2D(Collider2D other)
