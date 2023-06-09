@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject gameOverMenu;
     public GameObject lvlUPS;
+    public GameObject ArtifactChest;
     public static bool GameIsPaused = false;
     [SerializeField] public bool isEnabled = false;
 
@@ -18,11 +19,13 @@ public class UIManager : MonoBehaviour
     {
         PlayerController.OnPlayerDeath += EnableGameOverMEnu;
         PlayerController.OnPlayerLevelUp += enableLvlUpMenu;
+        ChestBehaviour.OnPlayerTrigger += enableArtifactMenu;
 
     }
     private void OnDisable()
     {
         PlayerController.OnPlayerDeath -= EnableGameOverMEnu;
+        ChestBehaviour.OnPlayerTrigger -= enableArtifactMenu;
     }
     public void EnableGameOverMEnu()
     {
@@ -54,8 +57,14 @@ public class UIManager : MonoBehaviour
     {
         isEnabled = true;
         lvlUPS.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        WorldPause();
+    }
+
+    public void enableArtifactMenu()
+    {
+        isEnabled = true;
+        ArtifactChest.SetActive(true);
+        WorldPause();
     }
 
     //!Pause Menu
@@ -69,14 +78,22 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                Pause();
+                GamePause();
             }
         }
     }
 
-    void Pause()
+    void GamePause()
     {
         pauseMenuUI.SetActive(true);
+        playerShooting.SetActive(false);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+
+    }
+
+    void WorldPause()
+    {
         playerShooting.SetActive(false);
         Time.timeScale = 0f;
         GameIsPaused = true;

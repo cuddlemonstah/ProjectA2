@@ -7,19 +7,20 @@ public class OrbRotation : MonoBehaviour
     public AttackStats attack;
     private PlayerController playercon;
     Vector3 currentEulerAngles;
-    public Transform pivot;
+    private GameObject pivot;
 
     // Start is called before the first frame update
     void Start()
     {
         playercon = FindObjectOfType<PlayerController>();
+        pivot = GameObject.FindGameObjectWithTag("Rotational Pivot");
     }
 
     // Update is called once per frame
     void Update()
     {
         currentEulerAngles += new Vector3(0, 0, 1) * Time.deltaTime * attack.rotationalSpeed;
-        pivot.localEulerAngles = currentEulerAngles;
+        pivot.transform.localEulerAngles = currentEulerAngles;
     }
 
     void OnTriggerEnter2D(Collider2D other)

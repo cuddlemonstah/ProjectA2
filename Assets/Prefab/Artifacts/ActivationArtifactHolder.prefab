@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1381144531265607796
+--- !u!1 &8901318385046728023
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7067167738832148181}
-  - component: {fileID: 8695100879096083527}
-  m_Layer: 0
-  m_Name: ActivationAbilityHolder
+  - component: {fileID: 3938923764133059420}
+  - component: {fileID: 1056283061122191646}
+  m_Layer: 5
+  m_Name: ActivationArtifactHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7067167738832148181
-Transform:
+--- !u!224 &3938923764133059420
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381144531265607796}
+  m_GameObject: {fileID: 8901318385046728023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 926.15845, y: 345.17828, z: -5561.8096}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8695100879096083527
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1056283061122191646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1381144531265607796}
+  m_GameObject: {fileID: 8901318385046728023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 090fe74129dc23e4aa1db6bd74dc723b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ddb3721ee445754ab4cc0a8233a6ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Atks:
-  - {fileID: 11400000, guid: 43c49de64d133c043aa43eef013806b4, type: 2}
-  - {fileID: 11400000, guid: a479e19c84807e645a4c512551f305fd, type: 2}
-  - {fileID: 11400000, guid: 58994909a52d79a4c8669757945d8353, type: 2}
+  Artifacts:
+  - {fileID: 11400000, guid: c09f8360a5e4d64409432ad781ec7d57, type: 2}

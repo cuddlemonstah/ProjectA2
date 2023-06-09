@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectiblesAndChestSpawner : MonoBehaviour
 {
-    public List<GameObject> xp = new List<GameObject>();
+    public List<GameObject> Collective = new List<GameObject>();
     float randomNum;
     int rando;
     int smallMax = 150;
@@ -20,6 +20,8 @@ public class CollectiblesAndChestSpawner : MonoBehaviour
 
     int InviMax = 10;
     public int currentInvi = 0;
+    int ChestMax = 3;
+    public int currentChest = 0;
 
     void Start()
     {
@@ -28,6 +30,7 @@ public class CollectiblesAndChestSpawner : MonoBehaviour
         StartCoroutine(LargeSpawn());
         StartCoroutine(LifeSpawn());
         StartCoroutine(InviSpawn());
+        StartCoroutine(ChestSpawn());
     }
 
 
@@ -41,7 +44,7 @@ public class CollectiblesAndChestSpawner : MonoBehaviour
             {
                 var randomPos = (Vector3)Random.insideUnitCircle * 30;
                 randomPos += transform.position;
-                Instantiate(xp[0], randomPos, transform.rotation);
+                Instantiate(Collective[0], randomPos, transform.rotation);
                 currentSmall++;
                 yield return delay;
             }
@@ -61,7 +64,7 @@ public class CollectiblesAndChestSpawner : MonoBehaviour
             {
                 var randomPos = (Vector3)Random.insideUnitCircle * 30;
                 randomPos += transform.position;
-                Instantiate(xp[1], randomPos, transform.rotation);
+                Instantiate(Collective[1], randomPos, transform.rotation);
                 currentMedium++;
                 yield return delay;
             }
@@ -81,7 +84,7 @@ public class CollectiblesAndChestSpawner : MonoBehaviour
             {
                 var randomPos = (Vector3)Random.insideUnitCircle * 30;
                 randomPos += transform.position;
-                Instantiate(xp[2], randomPos, transform.rotation);
+                Instantiate(Collective[2], randomPos, transform.rotation);
                 currentLarge++;
                 yield return delay;
             }
@@ -101,7 +104,7 @@ public class CollectiblesAndChestSpawner : MonoBehaviour
             {
                 var randomPos = (Vector3)Random.insideUnitCircle * 30;
                 randomPos += transform.position;
-                Instantiate(xp[3], randomPos, transform.rotation);
+                Instantiate(Collective[3], randomPos, transform.rotation);
                 currentLife++;
                 yield return delay;
             }
@@ -121,8 +124,30 @@ public class CollectiblesAndChestSpawner : MonoBehaviour
             {
                 var randomPos = (Vector3)Random.insideUnitCircle * 30;
                 randomPos += transform.position;
-                Instantiate(xp[4], randomPos, transform.rotation);
+                Instantiate(Collective[4], randomPos, transform.rotation);
                 currentInvi++;
+                yield return delay;
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+    }
+
+    IEnumerator ChestSpawn()
+    {
+
+        var delay = new WaitForSeconds(Random.Range(75f, 120f));
+
+        while (true)
+        {
+            if (currentChest < ChestMax)
+            {
+                var randomPos = (Vector3)Random.insideUnitCircle * 50;
+                randomPos += transform.position;
+                Instantiate(Collective[5], randomPos, transform.rotation);
+                currentChest++;
                 yield return delay;
             }
             else

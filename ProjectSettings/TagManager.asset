@@ -10,6 +10,8 @@ TagManager:
   - Abilities
   - Enemy
   - Rotational Pivot
+  - Magic Ball
+  - Artifact Sheet
   layers:
   - Default
   - TransparentFX

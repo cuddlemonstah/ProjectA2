@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstantiateAbility : MonoBehaviour
+public class ArtifactUI : MonoBehaviour
 {
-
-    //?UI only "its the cards that you can see when you level up"
     public Transform[] pos;
-    public List<GameObject> ability = new List<GameObject>();
+    public List<GameObject> artifacts = new List<GameObject>();
     UIManager UI;
     int randomNumber;
     bool reset;
-    // Start is called before the first frame update
+
     void OnEnable()
     {
         reset = true;
@@ -19,8 +17,8 @@ public class InstantiateAbility : MonoBehaviour
         {
             for (int i = 0; i < pos.Length; i++)
             {
-                randomNumber = Random.Range(0, ability.Count);
-                GameObject newA = Instantiate(ability[randomNumber], pos[i].position, transform.rotation);
+                randomNumber = Random.Range(0, artifacts.Count);
+                GameObject newA = Instantiate(artifacts[randomNumber], pos[i].position, transform.rotation);
                 newA.transform.SetParent(GameObject.FindGameObjectWithTag("Ability Sheet").transform, false);
             }
         }
@@ -39,4 +37,3 @@ public class InstantiateAbility : MonoBehaviour
         }
     }
 }
-

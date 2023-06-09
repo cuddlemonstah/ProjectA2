@@ -17,30 +17,31 @@ public class ActivateAp : MonoBehaviour
             Atks[0].activated = true;
             Atks[0].abilityLvl += 1;
         }
-        else if (Atks[0].activated == true)
+        else if (Atks[0].activated == true && Atks[0].abilityLvl <= 5)
         {
             Atks[0].abilityLvl += 1;
         }
         resume();
     }
-
-    public void MagicOrb()
+    public void Magic()
     {
-        if (Atks[3].activated == false)
+        if (Atks[1].activated == true && Atks[1].abilityLvl <= 5)
         {
-            Atks[3].activated = true;
-            Atks[3].abilityLvl += 1;
-        }
-        else if (Atks[3].activated == true)
-        {
-            Atks[3].abilityLvl += 1;
+            Atks[1].abilityLvl += 1;
         }
         resume();
     }
-
-    public void Magic()
+    public void MagicOrb()
     {
-        Atks[1].abilityLvl += 1;
+        if (Atks[2].activated == false)
+        {
+            Atks[2].activated = true;
+            Atks[2].abilityLvl += 1;
+        }
+        else if (Atks[2].activated == true && Atks[2].abilityLvl <= 5)
+        {
+            Atks[2].abilityLvl += 1;
+        }
         resume();
     }
 
@@ -56,6 +57,7 @@ public class ActivateAp : MonoBehaviour
         UIManager manage = FindObjectOfType<UIManager>();
         manage.isEnabled = false;
         manage.lvlUPS.SetActive(false);
+        manage.playerShooting.SetActive(true);
         Time.timeScale = 1f;
         UIManager.GameIsPaused = false;
     }

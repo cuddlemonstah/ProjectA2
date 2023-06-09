@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddbb1018a35d4d49b04546cb866f93a, type: 3}
   m_Name: Magic Orb
   m_EditorClassIdentifier: 
-  attackName: Orb
+  attackName: Magic Orb
   skillDamage: 10
   force: 0
-  rotationalSpeed: 99.99
+  rotationalSpeed: 50
   Anim: {fileID: 0}
   timeBetweenFiring: 0
   bullet: {fileID: 8291818094758167543, guid: 6d71d0beafe1351429554603f7400153, type: 3}
-  abilityLvl: 1
-  activated: 1
+  abilityLvl: 0
+  activated: 0

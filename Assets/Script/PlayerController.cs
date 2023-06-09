@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     //!adjustments
     float vertical;
     float horizontal;
-    [SerializeField] float speed = 5f;
+    public float speed = 5f;
     public bool isInvisible = false;
 
     // Start is called before the first frame update
