@@ -23,7 +23,7 @@ public class ActivatedAbilities : MonoBehaviour
 
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         rb = GetComponent<Rigidbody2D>();
-        Vector3 direction = proj.enemy[Random.Range(0, 5)].transform.position - transform.position;
+        Vector3 direction = proj.enemy[Random.Range(0, proj.enemy.Length)].transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * atk.force;
 
     }

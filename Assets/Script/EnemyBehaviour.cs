@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float damage;
     public float health;
     public float giveXp = 0.5f;
-
+    public bool Exist;
 
     void Awake()
     {
@@ -54,4 +54,15 @@ public class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void OnBecameVisible()
+    {
+        Exist = true;
+    }
+
+    void OnBecameInvisible()
+    {
+        Exist = true;
+    }
+
 }

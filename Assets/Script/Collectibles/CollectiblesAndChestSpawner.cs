@@ -7,18 +7,18 @@ public class CollectiblesAndChestSpawner : MonoBehaviour
     public List<GameObject> Collective = new List<GameObject>();
     float randomNum;
     int rando;
-    int smallMax = 150;
+    int smallMax = 500;
     public int currentSmall = 0;
-    int mediumMax = 75;
+    int mediumMax = 250;
     public int currentMedium = 0;
 
-    int LargeMax = 3;
+    int LargeMax = 20;
     public int currentLarge = 0;
 
-    int LifeMax = 10;
+    int LifeMax = 30;
     public int currentLife = 0;
 
-    int InviMax = 10;
+    int InviMax = 30;
     public int currentInvi = 0;
     int ChestMax = 3;
     public int currentChest = 0;
