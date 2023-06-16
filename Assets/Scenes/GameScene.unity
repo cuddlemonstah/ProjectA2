@@ -1008,7 +1008,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3385626646204054320, guid: 0905115abb4fd5d4482bef8db0178837, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5254006792265222643, guid: 0905115abb4fd5d4482bef8db0178837, type: 3}
       propertyPath: m_Name
@@ -1061,6 +1061,10 @@ PrefabInstance:
     - target: {fileID: 5254006792265222655, guid: 0905115abb4fd5d4482bef8db0178837, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553469116085198677, guid: 0905115abb4fd5d4482bef8db0178837, type: 3}
+      propertyPath: repeatRate
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0905115abb4fd5d4482bef8db0178837, type: 3}

@@ -16,10 +16,6 @@ public class ProjectileScript : MonoBehaviour
     //!Enemy cache
     private GameObject player;
     private PlayerController playercon;
-    GameObject closestEnemy;
-    public GameObject[] allEnemies;
-
-
     //!Bullet Behaviour
     public static bool ricochet;
     float collisionCount;
@@ -48,7 +44,8 @@ public class ProjectileScript : MonoBehaviour
 
     void Update()
     {
-        FindClosestEnemy();
+
+
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -60,7 +57,7 @@ public class ProjectileScript : MonoBehaviour
         }
         else if (enemy && ricochet == true)
         {
-            direction = closestEnemy.transform.position - this.transform.position;
+            direction = proj.enemy[GenerateRandom(proj.enemy.Length)].transform.position - this.transform.position;
             rb.velocity = new Vector2(direction.x, direction.y).normalized * Default.force;
             collisionCount += 1;
             DamageDeal(enemy);
@@ -70,6 +67,7 @@ public class ProjectileScript : MonoBehaviour
                 collisionCount = 0;
             }
 
+            //Debug.Log(other.collider.);
         }
     }
     void DamageDeal(EnemyBehaviour enemy)
@@ -79,21 +77,13 @@ public class ProjectileScript : MonoBehaviour
         enemy.damageDealer(damage);
     }
 
-    void FindClosestEnemy()
+    int GenerateRandom(int i)
     {
-        float distanceToClosestEnemy = Mathf.Infinity;
-        closestEnemy = null;
-        allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        int currentValue = Random.Range(0, i);
+        int nextValue = 0;
 
-        foreach (GameObject currentEnemy in allEnemies)
-        {
-            float distanceToEnemy = (currentEnemy.transform.position - this.transform.position).sqrMagnitude;
-            if (distanceToEnemy < distanceToClosestEnemy)
-            {
-                distanceToClosestEnemy = distanceToEnemy;
-                closestEnemy = currentEnemy;
-            }
-        }
-
+        //Debug.Log(currentValue);
+        return currentValue;
     }
+
 }
