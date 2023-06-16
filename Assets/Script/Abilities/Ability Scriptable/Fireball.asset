@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ddbb1018a35d4d49b04546cb866f93a, type: 3}
-  m_Name: Magic
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  attackName: Magic
-  skillDamage: 0
-  force: 15.27
+  attackName: Fireball
+  skillDamage: 20
+  force: 7.08
+  rotationalSpeed: 0
   Anim: {fileID: 0}
-  timeBetweenFiring: 0.7
-  bullet: {fileID: 113107254266721172, guid: c7973095caace8e439ff37c7b824def6, type: 3}
-  abilityLvl: 1
-  activated: 1
+  timeBetweenFiring: 1.52
+  bullet: {fileID: 539782663058732315, guid: 8e3a5d8a1dc4729409a02c28dd7cf493, type: 3}
+  abilityLvl: 0
+  activated: 0

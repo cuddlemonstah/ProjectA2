@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ddbb1018a35d4d49b04546cb866f93a, type: 3}
-  m_Name: Magic Orb
+  m_Name: Magic
   m_EditorClassIdentifier: 
-  attackName: Magic Orb
-  skillDamage: 20
-  force: 0
-  rotationalSpeed: 100
+  attackName: Magic
+  skillDamage: 0
+  force: 1
+  rotationalSpeed: 0
   Anim: {fileID: 0}
-  timeBetweenFiring: 0
-  bullet: {fileID: 8291818094758167543, guid: 6d71d0beafe1351429554603f7400153, type: 3}
-  abilityLvl: 5
+  timeBetweenFiring: 0.7
+  bullet: {fileID: 113107254266721172, guid: c7973095caace8e439ff37c7b824def6, type: 3}
+  abilityLvl: 1
   activated: 1

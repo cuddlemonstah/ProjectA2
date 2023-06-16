@@ -17,7 +17,7 @@ public class ActivateAp : MonoBehaviour
             Atks[0].activated = true;
             Atks[0].abilityLvl += 1;
         }
-        else if (Atks[0].activated == true && Atks[0].abilityLvl <= 5)
+        else if (Atks[0].activated == true && Atks[0].abilityLvl < 5)
         {
             Atks[0].abilityLvl += 1;
         }
@@ -25,7 +25,7 @@ public class ActivateAp : MonoBehaviour
     }
     public void Magic()
     {
-        if (Atks[1].activated == true && Atks[1].abilityLvl <= 5)
+        if (Atks[1].activated == true && Atks[1].abilityLvl < 5)
         {
             Atks[1].abilityLvl += 1;
         }
@@ -38,7 +38,7 @@ public class ActivateAp : MonoBehaviour
             Atks[2].activated = true;
             Atks[2].abilityLvl += 1;
         }
-        else if (Atks[2].activated == true && Atks[2].abilityLvl <= 5)
+        else if (Atks[2].activated == true && Atks[2].abilityLvl < 5)
         {
             Atks[2].abilityLvl += 1;
         }

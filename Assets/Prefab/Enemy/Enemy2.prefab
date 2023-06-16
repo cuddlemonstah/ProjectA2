@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!61 &1427470050405025757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
   damage: 5
   health: 20
   giveXp: 2
+  Exist: 0
 --- !u!114 &8185470901657895646
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -62,7 +62,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        Exist = true;
+        Exist = false;
     }
 
 }

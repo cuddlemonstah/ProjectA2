@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     [SerializeField]
     private AttackStats attacks;
     public Transform bulletTransform;
+    ProjectileScript rico;
     public bool canFire;
     private float timer;
     public float timeBetweenFiring;
@@ -17,6 +18,7 @@ public class Shooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rico = FindObjectOfType<ProjectileScript>();
         attacks.abilityLvl = 1;
         attacks.activated = true;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -33,60 +35,55 @@ public class Shooting : MonoBehaviour
             }
             else if (attacks.abilityLvl == 2 && attacks.activated == true)
             {
-                magicLvl2();
+                StartCoroutine(magicLvl2());
+            }
+            else if (attacks.abilityLvl == 3 && attacks.activated == true)
+            {
+                StartCoroutine(magicLvl3());
+            }
+            else if (attacks.abilityLvl == 4 && attacks.activated == true)
+            {
+                magicLvl4();
+            }
+            else if (attacks.abilityLvl == 5 && attacks.activated == true)
+            {
+                magicLvl5();
             }
         }
     }
 
     void magicLvl1()
     {
-        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 rot = mousePos - transform.position;
-        float rotZ = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
-
-        if (!canFire)
-        {
-            timer += Time.deltaTime;
-            if (timer > timeBetweenFiring)
-            {
-                canFire = true;
-                timer = 0;
-            }
-        }
+        MousePos();
         if (Input.GetMouseButtonDown(0) && canFire)
         {
             canFire = false;
             Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
         }
     }
-    void magicLvl2()
+    IEnumerator magicLvl2()
     {
-        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 rot = mousePos - transform.position;
-        float rotZ = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
-
-        if (!canFire)
-        {
-            timer += Time.deltaTime;
-            if (timer > timeBetweenFiring)
-            {
-                canFire = true;
-                timer = 0;
-            }
-        }
+        MousePos();
         if (Input.GetMouseButtonDown(0) && canFire)
         {
             canFire = false;
-            StartCoroutine(anotherBullet());
-
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.1f);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
         }
     }
 
-    void magicLvl3()
+    IEnumerator magicLvl3()
     {
-
+        ProjectileScript.ricochet = true;
+        MousePos();
+        if (Input.GetMouseButtonDown(0) && canFire)
+        {
+            canFire = false;
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.1f);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+        }
     }
     void magicLvl4()
     {
@@ -97,10 +94,21 @@ public class Shooting : MonoBehaviour
 
     }
 
-    IEnumerator anotherBullet()
+    void MousePos()
     {
-        Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
-        yield return new WaitForSeconds(.1f);
-        Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 rot = mousePos - transform.position;
+        float rotZ = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+
+        if (!canFire)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeBetweenFiring)
+            {
+                canFire = true;
+                timer = 0;
+            }
+        }
     }
 }
