@@ -11,19 +11,28 @@ public class ProjectileScript : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb;
     public AttackStats Default;
-    AbilityBehaviour proj;
+    Collision2D other;
+    static AbilityBehaviour proj;
 
     //!Enemy cache
     private GameObject player;
     private PlayerController playercon;
+    private static List<GameObject> enemyRange = new List<GameObject>();
     //!Bullet Behaviour
     public static bool ricochet;
-    float collisionCount;
+    int collisionCount;
+    public int collisionCountMax;
+    private static int currentValue;
+    private static int nextValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        ricochet = true;
+        //!Ability behaviour
+        ricochet = false;
+        collisionCountMax = 3;
+
+        //!Cache
         playercon = FindObjectOfType<PlayerController>();
         proj = FindObjectOfType<AbilityBehaviour>();
         float force = Default.force;
@@ -40,15 +49,15 @@ public class ProjectileScript : MonoBehaviour
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
 
+        GenerateRandom();
     }
 
     void Update()
     {
-
-
     }
     void OnCollisionEnter2D(Collision2D other)
     {
+        currentValue = enemyRange.IndexOf(other.gameObject);
         //!Player Projectile to enemy
         if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy) && ricochet == false)
         {
@@ -57,17 +66,15 @@ public class ProjectileScript : MonoBehaviour
         }
         else if (enemy && ricochet == true)
         {
-            direction = proj.enemy[GenerateRandom(proj.enemy.Length)].transform.position - this.transform.position;
+            direction = proj.enemy[GenerateRandom()].transform.position - this.transform.position;
             rb.velocity = new Vector2(direction.x, direction.y).normalized * Default.force;
             collisionCount += 1;
             DamageDeal(enemy);
-            if (collisionCount == 3)
+            if (collisionCount == collisionCountMax)
             {
                 Destroy(this.gameObject);
                 collisionCount = 0;
             }
-
-            //Debug.Log(other.collider.);
         }
     }
     void DamageDeal(EnemyBehaviour enemy)
@@ -77,13 +84,16 @@ public class ProjectileScript : MonoBehaviour
         enemy.damageDealer(damage);
     }
 
-    int GenerateRandom(int i)
+    static int GenerateRandom()
     {
-        int currentValue = Random.Range(0, i);
-        int nextValue = 0;
-
-        //Debug.Log(currentValue);
-        return currentValue;
+        nextValue = Random.Range(0, proj.enemy.Length);
+        enemyRange.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        if (nextValue == currentValue)
+        {
+            nextValue = Random.Range(0, proj.enemy.Length);
+            return nextValue;
+        }
+        return nextValue;
     }
 
 }
