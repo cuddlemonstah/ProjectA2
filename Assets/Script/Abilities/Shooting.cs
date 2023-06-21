@@ -21,6 +21,8 @@ public class Shooting : MonoBehaviour
         rico = FindObjectOfType<ProjectileScript>();
         attacks.abilityLvl = 1;
         attacks.activated = true;
+        attacks.skillDamage = 0;
+        attacks.timeBetweenFiring = 0.7f;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
@@ -43,11 +45,11 @@ public class Shooting : MonoBehaviour
             }
             else if (attacks.abilityLvl == 4 && attacks.activated == true)
             {
-                magicLvl4();
+                StartCoroutine(magicLvl4());
             }
             else if (attacks.abilityLvl == 5 && attacks.activated == true)
             {
-                magicLvl5();
+                StartCoroutine(magicLvl5());
             }
         }
     }
@@ -85,13 +87,38 @@ public class Shooting : MonoBehaviour
             Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
         }
     }
-    void magicLvl4()
+    IEnumerator magicLvl4()
     {
 
+        ProjectileScript.ricochet = true;
+        ProjectileScript.collisionCountMax = 5;
+        MousePos();
+        if (Input.GetMouseButtonDown(0) && canFire)
+        {
+            canFire = false;
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.1f);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.1f);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+        }
     }
-    void magicLvl5()
+    IEnumerator magicLvl5()
     {
-
+        ProjectileScript.ricochet = true;
+        ProjectileScript.collisionCountMax = 5;
+        MousePos();
+        if (Input.GetMouseButtonDown(0) && canFire)
+        {
+            canFire = false;
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.1f);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.1f);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+            yield return new WaitForSeconds(.1f);
+            Instantiate(attacks.bullet, bulletTransform.position, Quaternion.identity);
+        }
     }
 
     void MousePos()

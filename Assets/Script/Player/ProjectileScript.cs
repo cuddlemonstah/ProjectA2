@@ -20,8 +20,8 @@ public class ProjectileScript : MonoBehaviour
     private static List<GameObject> enemyRange = new List<GameObject>();
     //!Bullet Behaviour
     public static bool ricochet;
-    int collisionCount;
-    public int collisionCountMax;
+    public int collisionCount;
+    public static int collisionCountMax;
     private static int currentValue;
     private static int nextValue;
 

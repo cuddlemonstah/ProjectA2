@@ -120,8 +120,8 @@ public class PlayerController : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            Destroy(this.gameObject);
             OnPlayerDeath?.Invoke();
+            Destroy(this.gameObject);
         }
         HP.setHP(health);
     }
@@ -155,10 +155,10 @@ public class PlayerController : MonoBehaviour
         playerCurrentXp += Xp;
         for (int i = playerCurrentLvl; playerCurrentXp >= playerMaxXp; i++)
         {
-            OnPlayerLevelUp?.Invoke();
             playerCurrentXp = 0f;
             playerMaxXp *= 1.7f;
             playerCurrentLvl += 1;
+            OnPlayerLevelUp?.Invoke();
         }
         XpBar.setMaxXp(playerMaxXp);
         XpBar.setXp(playerCurrentXp);

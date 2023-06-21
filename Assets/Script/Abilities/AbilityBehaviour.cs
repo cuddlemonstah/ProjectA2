@@ -46,6 +46,26 @@ public class AbilityBehaviour : MonoBehaviour
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
                 yield return delay;
             }
+            else if (atk[0].activated == true && atk[0].abilityLvl == 2 && enemyNum > 0)
+            {
+                Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
+                yield return delay;
+            }
+            else if (atk[0].activated == true && atk[0].abilityLvl == 3 && enemyNum > 0)
+            {
+                Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
+                yield return delay;
+            }
+            else if (atk[0].activated == true && atk[0].abilityLvl == 4 && enemyNum > 0)
+            {
+                Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
+                yield return delay;
+            }
+            else if (atk[0].activated == true && atk[0].abilityLvl == 5 && enemyNum > 0)
+            {
+                Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
+                yield return delay;
+            }
             else if (enemyNum == 0)
             {
                 yield return null;

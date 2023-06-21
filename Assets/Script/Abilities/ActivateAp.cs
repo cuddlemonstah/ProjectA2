@@ -29,6 +29,15 @@ public class ActivateAp : MonoBehaviour
         {
             Atks[1].abilityLvl += 1;
         }
+        if (Atks[1].abilityLvl == 4)
+        {
+            Atks[1].skillDamage += 10;
+        }
+        if (Atks[1].abilityLvl == 5)
+        {
+            Atks[1].skillDamage += 5;
+            Atks[1].timeBetweenFiring -= 0.3f;
+        }
         resume();
     }
     public void MagicOrb()

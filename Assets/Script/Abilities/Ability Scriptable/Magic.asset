@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Magic
   skillDamage: 0
-  force: 1
+  force: 15
   rotationalSpeed: 0
   Anim: {fileID: 0}
   timeBetweenFiring: 0.7

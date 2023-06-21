@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     private void OnDisable()
     {
         PlayerController.OnPlayerDeath -= EnableGameOverMEnu;
+        PlayerController.OnPlayerLevelUp -= enableLvlUpMenu;
         ChestBehaviour.OnPlayerTrigger -= enableArtifactMenu;
     }
     public void EnableGameOverMEnu()
@@ -36,10 +37,9 @@ public class UIManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        gameOverMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void MainMenu()
     {
