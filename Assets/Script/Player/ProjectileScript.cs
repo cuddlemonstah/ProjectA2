@@ -12,7 +12,7 @@ public class ProjectileScript : MonoBehaviour
     private Rigidbody2D rb;
     public AttackStats Default;
     Collision2D other;
-    static AbilityBehaviour proj;
+    static AbilityBehaviourInLvl proj;
 
     //!Enemy cache
     private GameObject player;
@@ -34,7 +34,7 @@ public class ProjectileScript : MonoBehaviour
 
         //!Cache
         playercon = FindObjectOfType<PlayerController>();
-        proj = FindObjectOfType<AbilityBehaviour>();
+        proj = FindObjectOfType<AbilityBehaviourInLvl>();
         float force = Default.force;
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); //!camera
         rb = GetComponent<Rigidbody2D>();//!rigidbody

@@ -18,7 +18,10 @@ public class PlayerController : MonoBehaviour
     //!Player stats
     public float health, maxHP = 10f;
     public float mana, maxMana = 100f;
+    public float healthRegen;
+    public float manaRegen;
     public float playerDamage;
+    public float playerCoolDown;
     float playerMaxXp = 30f;
     public float playerCurrentXp;
     public int playerCurrentLvl;
@@ -42,6 +45,8 @@ public class PlayerController : MonoBehaviour
         playerDamage = 20f;
         health = maxHP;
         mana = maxMana;
+        healthRegen = 0.5f;
+        manaRegen = 0.3f;
         HP = FindObjectOfType<HealthBar>();
         Mana = FindObjectOfType<ManaBar>();
         XpBar = FindObjectOfType<XpBar>();

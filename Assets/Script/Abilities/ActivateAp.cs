@@ -21,6 +21,14 @@ public class ActivateAp : MonoBehaviour
         {
             Atks[0].abilityLvl += 1;
         }
+        if (Atks[0].abilityLvl == 2)
+        {
+            Atks[0].skillDamage += 15;
+        }
+        if (Atks[0].abilityLvl == 5)
+        {
+            Atks[0].skillDamage += 15;
+        }
         resume();
     }
     public void Magic()

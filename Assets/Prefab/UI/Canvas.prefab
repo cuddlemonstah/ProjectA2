@@ -2064,6 +2064,12 @@ MonoBehaviour:
   - {fileID: 5823442850953150984, guid: ed5f086e6687b3e469c5452ad0c6801a, type: 3}
   artifacts:
   - {fileID: 4601918782962924280, guid: 0fa89520f9b63234285545bc2306d84d, type: 3}
+  - {fileID: 4856018126592814240, guid: 2285aff204fa4ba4d8a5cbc3c11d7526, type: 3}
+  - {fileID: 7961716960304457889, guid: eb708aaadeaeb974dad96aa6423af304, type: 3}
+  - {fileID: 6748532962310776851, guid: d94def2c955f42b4c91b4e30e19de0b6, type: 3}
+  - {fileID: 3812027019411571629, guid: 36b5df02185547346af4041a8bb63131, type: 3}
+  - {fileID: 7189467260793316651, guid: b5902a04d98cdc34eadd17310def6cdf, type: 3}
+  - {fileID: 1214705096104319152, guid: 5830804184ec15e43b4f94a80e96d02b, type: 3}
 --- !u!1 &1509596880316259627
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,6 +3070,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5844931284671820492}
     m_Modifications:
+    - target: {fileID: 1056283061122191646, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
+      propertyPath: Artifacts.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056283061122191646, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
+      propertyPath: Artifacts.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: aee9f72e3c0462048a48eb81123a466b, type: 2}
+    - target: {fileID: 1056283061122191646, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
+      propertyPath: Artifacts.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 408d8245c12af154693d5a1fa02a108f, type: 2}
+    - target: {fileID: 1056283061122191646, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
+      propertyPath: Artifacts.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: a0b132b06c3e80e4dae8b9de99834647, type: 2}
+    - target: {fileID: 1056283061122191646, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
+      propertyPath: Artifacts.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 81e256742b841444abb7d3cd1734a7c7, type: 2}
+    - target: {fileID: 1056283061122191646, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
+      propertyPath: Artifacts.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5740288ccb7a5a46a65eb3186346dba, type: 2}
+    - target: {fileID: 1056283061122191646, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
+      propertyPath: Artifacts.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: d9c8481cd22bd284e8622d5f64923697, type: 2}
     - target: {fileID: 3938923764133059420, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Fireball
   skillDamage: 20
+  splashDamage: 10
   force: 7.08
   rotationalSpeed: 0
+  splashRange: 2
+  timeBetweenFiring: 2.5
   Anim: {fileID: 0}
-  timeBetweenFiring: 1.52
   bullet: {fileID: 539782663058732315, guid: 8e3a5d8a1dc4729409a02c28dd7cf493, type: 3}
-  abilityLvl: 1
-  activated: 1
+  abilityLvl: 0
+  explodes: 0
+  activated: 0

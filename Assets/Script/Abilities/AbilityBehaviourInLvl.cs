@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityBehaviour : MonoBehaviour
+public class AbilityBehaviourInLvl : MonoBehaviour
 {
     public GameObject[] enemy;
     private GameObject[] magicBall;
@@ -48,11 +48,13 @@ public class AbilityBehaviour : MonoBehaviour
             }
             else if (atk[0].activated == true && atk[0].abilityLvl == 2 && enemyNum > 0)
             {
+                atk[0].timeBetweenFiring = 3f;
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
                 yield return delay;
             }
             else if (atk[0].activated == true && atk[0].abilityLvl == 3 && enemyNum > 0)
             {
+                atk[0].explodes = true;
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
                 yield return delay;
             }
@@ -60,9 +62,14 @@ public class AbilityBehaviour : MonoBehaviour
             {
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
                 yield return delay;
+                Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
+                yield return delay;
             }
             else if (atk[0].activated == true && atk[0].abilityLvl == 5 && enemyNum > 0)
             {
+                atk[0].timeBetweenFiring = 2.4f;
+                Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
+                yield return delay;
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
                 yield return delay;
             }
@@ -152,10 +159,12 @@ public class AbilityBehaviour : MonoBehaviour
         {
             atk[i].abilityLvl = 0;
             atk[i].activated = false;
+            atk[i].explodes = false;
         }
 
         //? Fireball Ability
         atk[0].skillDamage = 20f;
+        atk[0].timeBetweenFiring = 3.5f;
 
         //? Magic Ball
         atk[1].skillDamage = 10f;
