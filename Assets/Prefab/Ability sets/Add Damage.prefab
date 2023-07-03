@@ -203,7 +203,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8695100879096083527, guid: 840c2050606b23a4ea895b3b2015742b, type: 3}
+      - m_Target: {fileID: -7691967666127962764, guid: 840c2050606b23a4ea895b3b2015742b, type: 3}
         m_TargetAssemblyTypeName: ActivateAp, Assembly-CSharp
         m_MethodName: AddDamage
         m_Mode: 1

@@ -5,9 +5,7 @@ using UnityEngine;
 public class ActivateArtif : MonoBehaviour
 {
     [SerializeField] private ArtifactStats[] Artifacts;
-    void Start()
-    {
-    }
+
     //?its for the artifact sheet... the buttons in the lvlup prefab
     public void Boots()
     {
@@ -19,7 +17,7 @@ public class ActivateArtif : MonoBehaviour
     public void BOL()
     {
         PlayerController player = FindObjectOfType<PlayerController>();
-        float multiplyHealth = player.health * Artifacts[1].moveSpeed;
+        float multiplyHealth = player.health * Artifacts[1].health;
         player.health += Mathf.Ceil(multiplyHealth);
         resume();
     }

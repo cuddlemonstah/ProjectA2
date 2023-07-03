@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1056283061122191646, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
+      - m_Target: {fileID: -8810962646578934407, guid: 083f68a07d5afb448be2966b573a59d3, type: 3}
         m_TargetAssemblyTypeName: ActivateArtif, Assembly-CSharp
         m_MethodName: Clock
         m_Mode: 1
