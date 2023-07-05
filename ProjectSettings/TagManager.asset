@@ -12,6 +12,7 @@ TagManager:
   - Rotational Pivot
   - Magic Ball
   - Artifact Sheet
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -54,15 +54,4 @@ public class EnemyBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    void OnBecameVisible()
-    {
-        Exist = true;
-    }
-
-    void OnBecameInvisible()
-    {
-        Exist = false;
-    }
-
 }

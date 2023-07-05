@@ -9,9 +9,8 @@ public class AbilityBehaviourInLvl : MonoBehaviour
     private EnemyBehaviour[] enemyExist;
     public GameObject pivot;
 
-    //!Going to Change this to a list or an array when there are new abilities
-    [SerializeField]
 
+    [SerializeField]
     private AttackStats[] atk;
     private bool ballInstantiated = false;
     float newX;
@@ -20,9 +19,11 @@ public class AbilityBehaviourInLvl : MonoBehaviour
     {
         Reset();
         StartCoroutine(insFireball());
+        StartCoroutine(insLightning());
     }
     void Update()
     {
+
         enemy = GameObject.FindGameObjectsWithTag("Enemy");
         enemyNum = enemy.Length;
         enemyExist = FindObjectsOfType<EnemyBehaviour>();
@@ -34,7 +35,7 @@ public class AbilityBehaviourInLvl : MonoBehaviour
     }
     // Update is called once per frame
 
-    //?Fireball Enum might change later
+    //?Fireball Enum
     IEnumerator insFireball()
     {
         var delay = new WaitForSeconds(atk[0].timeBetweenFiring);
@@ -61,7 +62,7 @@ public class AbilityBehaviourInLvl : MonoBehaviour
             else if (atk[0].activated == true && atk[0].abilityLvl == 4 && enemyNum > 0)
             {
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
-                yield return delay;
+                yield return new WaitForSeconds(0.5f);
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
                 yield return delay;
             }
@@ -69,7 +70,7 @@ public class AbilityBehaviourInLvl : MonoBehaviour
             {
                 atk[0].timeBetweenFiring = 2.4f;
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
-                yield return delay;
+                yield return new WaitForSeconds(0.5f);
                 Instantiate(atk[0].bullet, transform.position, Quaternion.identity);
                 yield return delay;
             }
@@ -82,9 +83,9 @@ public class AbilityBehaviourInLvl : MonoBehaviour
                 yield return null;
             }
         }
-
     }
 
+    //? a Ball that Rotates
     void BallIfTrue()
     {
         if (atk[1].activated == true)
@@ -151,6 +152,27 @@ public class AbilityBehaviourInLvl : MonoBehaviour
         }
     }
 
+    //? Lightning strike
+    IEnumerator insLightning()
+    {
+        //! Lightning Ability -----------
+        while (true)
+        {
+            var delay = new WaitForSeconds(atk[2].timeBetweenFiring);
+            Vector3 randomPos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 10));
+            randomPos += this.transform.position;
+            if (atk[2].activated == true && atk[2].abilityLvl == 1)
+            {
+                Instantiate(atk[2].bullet, new Vector2(-2,-2), Quaternion.identity);
+                yield return delay;
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+    }
+
     void Reset()
     {
 
@@ -159,15 +181,21 @@ public class AbilityBehaviourInLvl : MonoBehaviour
         {
             atk[i].abilityLvl = 0;
             atk[i].activated = false;
-            atk[i].explodes = false;
         }
 
         //? Fireball Ability
         atk[0].skillDamage = 20f;
         atk[0].timeBetweenFiring = 3.5f;
+        atk[0].explodes = false;
 
         //? Magic Ball
         atk[1].skillDamage = 10f;
         atk[1].rotationalSpeed = 50f;
+
+        //?Lightning Ability
+        atk[2].skillDamage = 100f;
+        atk[2].timeBetweenFiring = 2f;
+        atk[2].splashDamage = 60f;
+        atk[2].explodes = true;
     }
 }

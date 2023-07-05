@@ -69,6 +69,21 @@ public class ActivateAp : MonoBehaviour
         resume();
     }
 
+    public void Lightning()
+    {
+
+        if (Atks[3].activated == false)
+        {
+            Atks[3].activated = true;
+            Atks[3].abilityLvl += 1;
+        }
+        else if (Atks[3].activated == true && Atks[3].abilityLvl < 5)
+        {
+            Atks[3].abilityLvl += 1;
+        }
+        resume();
+    }
+
     private void resume()
     {
         UIManager manage = FindObjectOfType<UIManager>();

@@ -33,7 +33,7 @@ public class FireballBehaviour : MonoBehaviour
 
         float newDamage = atk.skillDamage + playercon.playerDamage;
         float damage = newDamage;
-        if (atk.explodes == true)
+        if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enem) && atk.explodes == true)
         {
             var hitEnemies = Physics2D.OverlapCircleAll(transform.position, atk.splashRange);
             foreach (var enemies in hitEnemies)
@@ -51,21 +51,15 @@ public class FireballBehaviour : MonoBehaviour
 
             }
         }
-        else
+        else if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy) && atk.explodes == false)
         {
             //!Enemy Damage Dealer
-            var e = GetComponent<EnemyBehaviour>();
-            e.damageDealer(damage);
+            enemy.damageDealer(damage);
         }
         //!It randomizes the projectile target between enemies
         randomEnemy = Random.Range(0, proj.enemy.Length);
 
 
         Destroy(gameObject);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(this.transform.position, atk.splashRange);
     }
 }

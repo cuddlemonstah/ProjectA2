@@ -18,14 +18,9 @@ public class PlayerController : MonoBehaviour
     //!Player stats
     public float health, maxHP = 10f;
     public float mana, maxMana = 100f;
-    public float healthRegen;
-    public float manaRegen;
-    public float playerDamage;
-    public float playerCoolDown;
-    float playerMaxXp = 30f;
-    public float playerCurrentXp;
-    public int playerCurrentLvl;
-    public int playerMaxLvl = 20;
+    public float healthRegen, manaRegen, playerCoolDown, playerDamage;
+    public float playerCurrentXp, playerMaxXp = 30f;
+    public int playerCurrentLvl, playerMaxLvl = 20;
 
     //!Player dash
     public float dashSpeed;
