@@ -16,5 +16,8 @@ public class AttackStats : ScriptableObject
     public GameObject bullet;
     public int abilityLvl;
     public bool explodes;
+    public bool stuns;
+    public bool slows;
+    public bool poisons;
     public bool activated;
 }

@@ -77,6 +77,19 @@ public class ActivateAp : MonoBehaviour
             Atks[3].activated = true;
             Atks[3].abilityLvl += 1;
         }
+        if (Atks[3].abilityLvl == 3)
+        {
+            Atks[3].skillDamage += 30;
+            Atks[3].timeBetweenFiring = 1.75f;
+            Atks[3].splashRange = 1f;
+        }
+        if (Atks[3].abilityLvl == 4)
+        {
+            Atks[3].stuns = true;
+            Atks[3].skillDamage += 20;
+            Atks[3].timeBetweenFiring = 1.65f;
+            Atks[3].splashRange = 1.25f;
+        }
         else if (Atks[3].activated == true && Atks[3].abilityLvl < 5)
         {
             Atks[3].abilityLvl += 1;

@@ -8,7 +8,7 @@ public class LightningBehaviour : MonoBehaviour
     public AttackStats atk;
     private PlayerController player;
 
-    public float splashRange;
+    public static bool stuns = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,16 +18,19 @@ public class LightningBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var thisObj = GetComponent<CircleCollider2D>();
+        //thisObj.radius = atk.splashRange;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         float newDamage = atk.skillDamage + player.playerDamage;
         float damage = newDamage;
-        if (other.gameObject.CompareTag("Ground") && atk.explodes == true)
+        if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enem) || other.CompareTag("Ground") && atk.explodes == true)
         {
-            var hitGround = Physics2D.OverlapCircleAll(transform.position, splashRange);
-            foreach (var enemies in hitGround)
+            Debug.Log(other);
+            var hitEnemies = Physics2D.OverlapCircleAll(transform.position, atk.splashRange);
+            foreach (var enemies in hitEnemies)
             {
                 var enemy = enemies.GetComponent<EnemyBehaviour>();
                 if (enemy)
@@ -36,8 +39,8 @@ public class LightningBehaviour : MonoBehaviour
                     var distance = Vector3.Distance(closestPoint, transform.position);
 
                     var damagePercent = Mathf.InverseLerp(atk.splashRange, 0, distance);
-                    enemy.damageDealer(damage);
-                    Debug.Log(enemy + " " + damagePercent);
+                    enemy.damageDealer(damagePercent * damage);
+                    Debug.Log(enemy);
                 }
 
             }
@@ -47,11 +50,16 @@ public class LightningBehaviour : MonoBehaviour
             //!Enemy Damage Dealer
             enemy.damageDealer(damage);
         }
-        Destroy(this.transform.parent.gameObject, 0.2f);
+        Destroy(this.gameObject, 0.2f);
     }
+
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y - 6.3f), splashRange);
+        Gizmos.DrawWireSphere(transform.position, atk.splashRange);
+    }
+    void stunBeh()
+    {
+        
     }
 
 }
