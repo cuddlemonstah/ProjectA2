@@ -119,11 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef3b2ffd9e28a841b866bda2df898a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  damage: 10
-  health: 40
-  giveXp: 2
-  Exist: 0
+  enemies: {fileID: 11400000, guid: 16a480ac46d331145b5674f723931a38, type: 2}
 --- !u!61 &1416480032
 BoxCollider2D:
   m_ObjectHideFlags: 0

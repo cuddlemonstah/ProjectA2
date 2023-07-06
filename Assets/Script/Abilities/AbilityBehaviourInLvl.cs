@@ -233,7 +233,6 @@ public class AbilityBehaviourInLvl : MonoBehaviour
     public Vector3 randomPos()
     {
         Vector3 randomPos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 10));
-        randomPos += this.transform.position;
         return randomPos;
     }
 }

@@ -146,11 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef3b2ffd9e28a841b866bda2df898a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  damage: 5
-  health: 20
-  giveXp: 2
-  Exist: 0
+  enemies: {fileID: 11400000, guid: 8952c7333e993f44e9972b19eeffac17, type: 2}
 --- !u!114 &8185470901657895646
 MonoBehaviour:
   m_ObjectHideFlags: 0
