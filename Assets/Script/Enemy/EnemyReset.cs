@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyReset : MonoBehaviour
 {
-    public ER[] enemies;
+    [SerializeField]
+    EnemyScriptObj[] enemies;
 
-    float speed;
+    public float speed;
     float damage;
     float health;
 
@@ -17,5 +18,14 @@ public class EnemyReset : MonoBehaviour
         this.health = health;
     }
 
-    
+    void Update()
+    {
+
+        //! Get Melee Stat
+        GetStat(enemies[0].speed, enemies[0].damage, enemies[0].health);
+        //! Get Range Stat
+        GetStat(enemies[1].speed, enemies[1].damage, enemies[1].health);
+
+    }
+
 }
