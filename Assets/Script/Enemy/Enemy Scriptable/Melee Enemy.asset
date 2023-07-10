@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd95ac6fa257f5b458e4011807f114a7, type: 3}
   m_Name: Melee Enemy
   m_EditorClassIdentifier: 
-  name: Melee
-  speed: 0
+  idNo: 0
+  speed: 5
   infiniteDistance: 0
   damage: 20
-  health: 85744.7
+  health: 8486.557
   giveXp: 0.5

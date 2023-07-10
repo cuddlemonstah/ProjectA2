@@ -7,25 +7,47 @@ public class EnemyReset : MonoBehaviour
     [SerializeField]
     EnemyScriptObj[] enemies;
 
-    public float speed;
-    float damage;
-    float health;
+    float[] speed;
+    float[] damage;
+    float[] health;
 
-    void GetStat(float speed, float damage, float health)
+    void Start()
     {
-        this.speed = speed;
-        this.damage = damage;
-        this.health = health;
+        int arraySize = enemies.Length;
+        speed = new float[arraySize];
+        damage = new float[arraySize];
+        health = new float[arraySize];
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            GetStatSpeed(i, enemies[i].speed);
+            GetStatDamage(i, enemies[i].damage);
+            GetStatHealth(i, enemies[i].health);
+        }
+    }
+    public void GetStatSpeed(int index, float speed)
+    {
+        this.speed[index] = speed;
+    }
+    public void GetStatDamage(int index, float damage)
+    {
+        this.damage[index] = damage;
+    }
+    public void GetStatHealth(int index, float health)
+    {
+        this.health[index] = health;
     }
 
-    void Update()
+    public float setSpeed(int idNo)
     {
-
-        //! Get Melee Stat
-        GetStat(enemies[0].speed, enemies[0].damage, enemies[0].health);
-        //! Get Range Stat
-        GetStat(enemies[1].speed, enemies[1].damage, enemies[1].health);
-
+        return speed[idNo];
+    }
+    public float setDamage(int idNo)
+    {
+        return damage[idNo];
+    }
+    public float setHealth(int idNo)
+    {
+        return health[idNo];
     }
 
 }

@@ -6,11 +6,15 @@ public class LightningBehaviour : MonoBehaviour
 {
 
     public AttackStats atk;
+    public CrowdControl CC;
     private PlayerController player;
+    private EnemyBehaviour enemy;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        enemy = FindObjectOfType<EnemyBehaviour>();
         player = FindObjectOfType<PlayerController>();
         Destroy(this.gameObject, 0.2f);
     }
@@ -19,7 +23,6 @@ public class LightningBehaviour : MonoBehaviour
     void Update()
     {
         var thisObj = GetComponent<CircleCollider2D>();
-        //thisObj.radius = atk.splashRange;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -55,7 +58,7 @@ public class LightningBehaviour : MonoBehaviour
                 var enemy = enemies.GetComponent<EnemyBehaviour>();
                 if (enemy)
                 {
-                    StartCoroutine(stunBeh(other));
+                    enemy.ApplyStun(CC.stunDuration);
                     var closestPoint = enemies.ClosestPoint(transform.position);
                     var distance = Vector3.Distance(closestPoint, transform.position);
                     var damagePercent = Mathf.InverseLerp(atk.splashRange, 0, distance);
@@ -74,13 +77,4 @@ public class LightningBehaviour : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, atk.splashRange);
     }
-    IEnumerator stunBeh(Collider2D enem)
-    {
-        if (enem.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
-        {
-            enemy.enemies.speed = 0f;
-            yield return new WaitForSeconds(0.2f);
-        }
-    }
-
 }

@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd95ac6fa257f5b458e4011807f114a7, type: 3}
-  m_Name: Range Enemies
+  m_Script: {fileID: 11500000, guid: 85eefc1a5b3d5ca4bbe4f81448e6734f, type: 3}
+  m_Name: Lightning CC's
   m_EditorClassIdentifier: 
-  idNo: 1
-  speed: 3
-  infiniteDistance: 0
-  damage: 20
-  health: 25
-  giveXp: 0.5
+  stunDuration: 0
+  slowDuration: 0
+  poisonDuration: 0

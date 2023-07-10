@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atk: {fileID: 11400000, guid: 2bee495db08a70147a7534a38cb0e9fc, type: 2}
-  splashRange: 2
+  CC: {fileID: 11400000, guid: a2b0e0a480b5a3b41a3283800908a843, type: 2}
 --- !u!58 &1591342083643617757
 CircleCollider2D:
   m_ObjectHideFlags: 0
