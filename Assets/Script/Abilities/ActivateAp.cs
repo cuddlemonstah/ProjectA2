@@ -6,8 +6,10 @@ public class ActivateAp : MonoBehaviour
 {
 
     [SerializeField] private AttackStats[] Atks;
+    [SerializeField] private HazardPoolBehaviour hazPool;
     void Start()
     {
+        hazPool = FindObjectOfType<HazardPoolBehaviour>();
     }
     //?its for the ability sheet... the buttons in the lvlup prefab
     public void Fireball()
@@ -81,18 +83,60 @@ public class ActivateAp : MonoBehaviour
         {
             Atks[3].skillDamage += 30;
             Atks[3].timeBetweenFiring = 1.75f;
-            Atks[3].splashRange = 1f;
+            Atks[3].splashRadius = 1f;
         }
         if (Atks[3].abilityLvl == 4)
         {
             Atks[3].stuns = true;
             Atks[3].skillDamage += 20;
             Atks[3].timeBetweenFiring = 1.65f;
-            Atks[3].splashRange = 1.25f;
+            Atks[3].splashRadius = 1.25f;
+        }
+        if (Atks[3].abilityLvl == 5)
+        {
+            Atks[3].stuns = true;
+            Atks[3].skillDamage += 10;
+            Atks[3].splashRadius = 2;
         }
         else if (Atks[3].activated == true && Atks[3].abilityLvl < 5)
         {
             Atks[3].abilityLvl += 1;
+        }
+        resume();
+    }
+
+    public void HazPool()
+    {
+        if (Atks[4].activated == false)
+        {
+            Atks[4].activated = true;
+            Atks[4].abilityLvl += 1;
+        }
+        else if (Atks[4].activated == true && Atks[0].abilityLvl < 5)
+        {
+            Atks[4].abilityLvl += 1;
+        }
+        if (Atks[4].abilityLvl == 2)
+        {
+            Atks[4].skillDamage = 6.5f;
+            Atks[4].TimeBeforeItsGone = 5f;
+        }
+        if (Atks[4].abilityLvl == 3)
+        {
+            Atks[4].splashRadius = 1f;
+            Atks[4].timeBetweenFiring = 16f;
+        }
+        if (Atks[4].abilityLvl == 4)
+        {
+            Atks[4].skillDamage = 7f;
+            Atks[4].TimeBeforeItsGone = 6f;
+        }
+        if (Atks[4].abilityLvl == 5)
+        {
+            Atks[4].splashRadius = 1.3f;
+            Atks[4].skillDamage = 10f;
+            Atks[4].TimeBeforeItsGone = 7f;
+            Atks[4].timeBetweenFiring = 14f;
         }
         resume();
     }

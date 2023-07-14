@@ -5,8 +5,8 @@ using UnityEngine;
 public class LightningBehaviour : MonoBehaviour
 {
 
-    public AttackStats atk;
-    public CrowdControl CC;
+    [SerializeField] private AttackStats atk;
+    private CrowdControl CC;
     private PlayerController player;
     private EnemyBehaviour enemy;
 
@@ -33,7 +33,7 @@ public class LightningBehaviour : MonoBehaviour
         || other.CompareTag("Ground")
         && atk.explodes == true)
         {
-            var hitEnemies = Physics2D.OverlapCircleAll(transform.position, atk.splashRange);
+            var hitEnemies = Physics2D.OverlapCircleAll(transform.position, atk.splashRadius);
             foreach (var enemies in hitEnemies)
             {
                 var enemy = enemies.GetComponent<EnemyBehaviour>();
@@ -42,39 +42,42 @@ public class LightningBehaviour : MonoBehaviour
                     var closestPoint = enemies.ClosestPoint(transform.position);
                     var distance = Vector3.Distance(closestPoint, transform.position);
 
-                    var damagePercent = Mathf.InverseLerp(atk.splashRange, 0, distance);
+                    var damagePercent = Mathf.InverseLerp(atk.splashRadius, 0, distance);
                     enemy.damageDealer(damagePercent * damage);
                 }
 
             }
+            Debug.Log("explodes");
+            Debug.Log(damage);
         }
         if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy1)
         || other.CompareTag("Ground")
         && atk.stuns == true && atk.explodes == true)
         {
-            var hitEnemies = Physics2D.OverlapCircleAll(transform.position, atk.splashRange);
+            var hitEnemies = Physics2D.OverlapCircleAll(transform.position, atk.splashRadius);
             foreach (var enemies in hitEnemies)
             {
                 var enemy = enemies.GetComponent<EnemyBehaviour>();
                 if (enemy)
                 {
-                    enemy.ApplyStun(CC.stunDuration);
+                    if (enemy.TryGetComponent<ICCable>(out ICCable cc))
+                    {
+                        cc.applyStun(CC.stunDuration);
+                    }
                     var closestPoint = enemies.ClosestPoint(transform.position);
                     var distance = Vector3.Distance(closestPoint, transform.position);
-                    var damagePercent = Mathf.InverseLerp(atk.splashRange, 0, distance);
+                    var damagePercent = Mathf.InverseLerp(atk.splashRadius, 0, distance);
                     enemy.damageDealer(damagePercent * damage);
                 }
 
             }
+            Debug.Log("explodes");
+            Debug.Log(damage);
         }
         else if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
         {
             //!Enemy Damage Dealer
             enemy.damageDealer(damage);
         }
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, atk.splashRange);
     }
 }

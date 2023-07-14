@@ -16,5 +16,5 @@ MonoBehaviour:
   speed: 5
   infiniteDistance: 0
   damage: 20
-  health: 8486.557
+  health: 50
   giveXp: 0.5

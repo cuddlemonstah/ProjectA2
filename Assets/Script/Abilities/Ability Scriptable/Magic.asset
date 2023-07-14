@@ -14,10 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Magic
   skillDamage: 0
+  splashDamage: 0
   force: 15
   rotationalSpeed: 0
-  Anim: {fileID: 0}
+  splashRange: 0
   timeBetweenFiring: 0.7
+  Anim: {fileID: 0}
   bullet: {fileID: 113107254266721172, guid: c7973095caace8e439ff37c7b824def6, type: 3}
-  abilityLvl: 1
+  abilityLvl: 3
+  explodes: 0
+  stuns: 0
+  slows: 0
+  poisons: 0
   activated: 1

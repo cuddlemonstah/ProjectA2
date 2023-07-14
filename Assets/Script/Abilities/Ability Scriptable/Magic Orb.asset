@@ -13,14 +13,17 @@ MonoBehaviour:
   m_Name: Magic Orb
   m_EditorClassIdentifier: 
   attackName: Magic Orb
-  skillDamage: 10
+  skillDamage: 20
   splashDamage: 0
   force: 0
-  rotationalSpeed: 50
+  rotationalSpeed: 100
   splashRange: 0
   timeBetweenFiring: 0
   Anim: {fileID: 0}
   bullet: {fileID: 8291818094758167543, guid: 6d71d0beafe1351429554603f7400153, type: 3}
-  abilityLvl: 0
+  abilityLvl: 5
   explodes: 0
-  activated: 0
+  stuns: 0
+  slows: 0
+  poisons: 0
+  activated: 1

@@ -10,8 +10,9 @@ public class AttackStats : ScriptableObject
     public float splashDamage;
     public float force;
     public float rotationalSpeed;
-    public float splashRange;
+    public float splashRadius;
     public float timeBetweenFiring;
+    public float TimeBeforeItsGone;
     public Animation Anim;
     public GameObject bullet;
     public int abilityLvl;

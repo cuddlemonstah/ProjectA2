@@ -20,6 +20,7 @@ public class AbilityBehaviourInLvl : MonoBehaviour
         Reset();
         StartCoroutine(insFireball());
         StartCoroutine(insLightning());
+        StartCoroutine(insHazardPool());
     }
     void Update()
     {
@@ -165,34 +166,35 @@ public class AbilityBehaviourInLvl : MonoBehaviour
                 Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
                 yield return delay;
             }
-            else if (atk[2].activated == true && atk[2].abilityLvl == 2)
+            else
             {
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                yield return delay;
+                yield return null;
             }
-            else if (atk[2].activated == true && atk[2].abilityLvl == 3)
-            {
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                yield return delay;
-            }
-            else if (atk[2].activated == true && atk[2].abilityLvl == 4)
-            {
+        }
+    }
 
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
+    IEnumerator insHazardPool()
+    {
+        //! Lightning Ability -----------
+        while (true)
+        {
+            var delay = new WaitForSeconds(atk[3].timeBetweenFiring);
+            if (atk[3].activated == true && atk[3].abilityLvl == 1 || atk[3].abilityLvl == 2)
+            {
+                Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
                 yield return delay;
             }
-            else if (atk[2].activated == true && atk[2].abilityLvl == 5)
+            if (atk[3].activated == true && atk[3].abilityLvl == 3 || atk[3].abilityLvl == 4)
             {
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
-                Instantiate(atk[2].bullet, randomPos(), Quaternion.identity);
+                Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
+                Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
+                yield return delay;
+            }
+            if (atk[3].activated == true && atk[3].abilityLvl == 5)
+            {
+                Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
+                Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
+                Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
                 yield return delay;
             }
             else
@@ -225,14 +227,20 @@ public class AbilityBehaviourInLvl : MonoBehaviour
 
         //?Lightning Ability
         atk[2].skillDamage = 100f;
-        atk[2].splashRange = 0.7f;
+        atk[2].splashRadius = 0.7f;
         atk[2].timeBetweenFiring = 2f;
         atk[2].splashDamage = 60f;
         atk[2].explodes = true;
+
+        //?Hazard Pool Ability
+        atk[3].skillDamage = 5f;
+        atk[3].splashRadius = 0.75f;
+        atk[3].timeBetweenFiring = 18f;
+        atk[3].TimeBeforeItsGone = 4f;
     }
     public Vector3 randomPos()
     {
-        Vector3 randomPos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 10));
+        Vector3 randomPos = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width - 150), Random.Range(0, Screen.height - 150), 10));
         return randomPos;
     }
 }

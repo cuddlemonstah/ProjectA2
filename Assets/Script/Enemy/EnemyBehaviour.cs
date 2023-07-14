@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour, ICCable
 {
     //!Cache
     Rigidbody2D rigid;
@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     public EnemyReset ER;
 
     float vertical, horizontal;
-    public float speed, health;
+    public float speed, health, Xp, damage;
     private bool stunned = false;
     public int idNo;
 
@@ -31,6 +31,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         speed = ER.setSpeed(idNo);
         health = ER.setHealth(idNo);
+        Xp = ER.setXp(idNo);
+        damage = ER.setDamage(idNo);
     }
 
     void FixedUpdate()
@@ -55,11 +57,10 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
             var playerController = FindObjectOfType<PlayerController>();
-            playerController.experienceAdd(enemies.giveXp);
-
+            playerController.experienceAdd(Xp);
             for (int i = 1; i < playerController.playerCurrentLvl; i++)
             {
-                enemies.giveXp *= 1.2f;
+                Xp *= 1.2f;
             }
         }
     }
@@ -68,18 +69,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            player.damageDealer(ER.setDamage(idNo));
-            player.experienceAdd(enemies.giveXp);
+            player.damageDealer(damage);
+            player.experienceAdd(Xp);
             Destroy(gameObject);
-        }
-    }
-
-
-    public void ApplyStun(float duration)
-    {
-        if (!stunned)
-        {
-            StartCoroutine(StunCoroutine(duration));
         }
     }
 
@@ -92,5 +84,21 @@ public class EnemyBehaviour : MonoBehaviour
         stunned = false;
     }
 
+    public void applyStun(float duration)
+    {
+        if (!stunned)
+        {
+            StartCoroutine(StunCoroutine(duration));
+        }
+    }
 
+    public void applySlow(float duration)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void applyPoison(float duration)
+    {
+        throw new System.NotImplementedException();
+    }
 }
