@@ -6,10 +6,8 @@ public class ActivateAp : MonoBehaviour
 {
 
     [SerializeField] private AttackStats[] Atks;
-    [SerializeField] private HazardPoolBehaviour hazPool;
     void Start()
     {
-        hazPool = FindObjectOfType<HazardPoolBehaviour>();
     }
     //?its for the ability sheet... the buttons in the lvlup prefab
     public void Fireball()
@@ -137,6 +135,19 @@ public class ActivateAp : MonoBehaviour
             Atks[4].skillDamage = 10f;
             Atks[4].TimeBeforeItsGone = 7f;
             Atks[4].timeBetweenFiring = 14f;
+        }
+        resume();
+    }
+    public void Shield()
+    {
+        if (Atks[5].activated == false)
+        {
+            Atks[5].activated = true;
+            Atks[5].abilityLvl += 1;
+        }
+        else if (Atks[5].activated == true && Atks[0].abilityLvl < 5)
+        {
+            Atks[5].abilityLvl += 1;
         }
         resume();
     }

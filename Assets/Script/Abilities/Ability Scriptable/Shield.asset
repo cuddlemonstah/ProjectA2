@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ddbb1018a35d4d49b04546cb866f93a, type: 3}
+  m_Name: Shield
+  m_EditorClassIdentifier: 
+  attackName: Shield
+  skillDamage: 0
+  splashDamage: 0
+  force: 0
+  rotationalSpeed: 0
+  splashRadius: 0
+  timeBetweenFiring: 13
+  TimeBeforeItsGone: 3
+  Anim: {fileID: 0}
+  bullet: {fileID: 4642769257887963520, guid: c5ece0e4c641bd24ea09b2a10ebf511b, type: 3}
+  abilityLvl: 1
+  explodes: 0
+  stuns: 0
+  slows: 0
+  poisons: 0
+  activated: 1

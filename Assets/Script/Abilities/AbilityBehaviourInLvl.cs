@@ -9,7 +9,8 @@ public class AbilityBehaviourInLvl : MonoBehaviour
     private EnemyBehaviour[] enemyExist;
     public GameObject pivot;
 
-
+    [SerializeField]
+    private Transform player;
     [SerializeField]
     private AttackStats[] atk;
     private bool ballInstantiated = false;
@@ -21,6 +22,7 @@ public class AbilityBehaviourInLvl : MonoBehaviour
         StartCoroutine(insFireball());
         StartCoroutine(insLightning());
         StartCoroutine(insHazardPool());
+        StartCoroutine(insShield());
     }
     void Update()
     {
@@ -195,6 +197,22 @@ public class AbilityBehaviourInLvl : MonoBehaviour
                 Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
                 Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
                 Instantiate(atk[3].bullet, randomPos(), Quaternion.identity);
+                yield return delay;
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+    }
+    IEnumerator insShield()
+    {
+        while (true)
+        {
+            var delay = new WaitForSeconds(atk[4].timeBetweenFiring);
+            if (atk[4].activated == true && atk[4].abilityLvl == 1)
+            {
+                Instantiate(atk[4].bullet, player.transform.position, Quaternion.identity, player);
                 yield return delay;
             }
             else
