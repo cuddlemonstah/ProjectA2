@@ -13,6 +13,7 @@ TagManager:
   - Magic Ball
   - Artifact Sheet
   - Ground
+  - Shield UI
   layers:
   - Default
   - TransparentFX

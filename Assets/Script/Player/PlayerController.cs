@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public static event Action OnPlayerLevelUp;
 
     //!Player stats
-    public float health, maxHP = 10f;
+    public float health, maxHP = 100f;
     public float mana, maxMana = 100f;
     public float healthRegen, manaRegen, playerCoolDown, playerDamage;
     public float playerCurrentXp, playerMaxXp = 30f;

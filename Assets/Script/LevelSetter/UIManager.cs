@@ -21,13 +21,16 @@ public class UIManager : MonoBehaviour
         PlayerController.OnPlayerDeath += EnableGameOverMEnu;
         PlayerController.OnPlayerLevelUp += enableLvlUpMenu;
         ChestBehaviour.OnPlayerTrigger += enableArtifactMenu;
-
+        ShieldBehaviour.OnPlayerShield += EnableShield;
+        ShieldBehaviour.DisablePlayerShield += DisableShield;
     }
     private void OnDisable()
     {
         PlayerController.OnPlayerDeath -= EnableGameOverMEnu;
         PlayerController.OnPlayerLevelUp -= enableLvlUpMenu;
         ChestBehaviour.OnPlayerTrigger -= enableArtifactMenu;
+        ShieldBehaviour.OnPlayerShield -= EnableShield;
+        ShieldBehaviour.DisablePlayerShield -= DisableShield;
     }
 
     public void EnableShield()

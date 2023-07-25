@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 5694218918119474061}
   - component: {fileID: 2671909858952884337}
   - component: {fileID: 6830492593447200492}
-  - component: {fileID: 67601809200169131}
   m_Layer: 5
   m_Name: Shield UI
   m_TagString: Untagged
@@ -174,19 +173,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &67601809200169131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5270444230323266675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d92b9d5512d1b04c9722dcac81fe47f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 6830492593447200492}
 --- !u!1 &7724381940016160006
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,3 +18,4 @@ MonoBehaviour:
   damage: 20
   health: 25
   giveXp: 0.3
+  damageMultiplier: 2.24

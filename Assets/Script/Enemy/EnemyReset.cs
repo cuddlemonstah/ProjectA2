@@ -27,7 +27,7 @@ public class EnemyReset : MonoBehaviour
             GetStatSpeed(i, enemies[i].speed);
             GetStatDamage(i, enemies[i].damage);
             GetStatHealth(i, enemies[i].health);
-            GetStatDamage(i, enemies[i].damageMultiplier);
+            GetStatDamageMultiplier(i, enemies[i].damageMultiplier);
         }
     }
     private void GetStatSpeed(int index, float speed)

@@ -14,4 +14,5 @@ public class ShieldBar : MonoBehaviour
     {
         slider.maxValue = maxShield;
     }
+
 }
