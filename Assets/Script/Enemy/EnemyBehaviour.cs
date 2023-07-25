@@ -15,7 +15,7 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
     public EnemyReset ER;
 
     float vertical, horizontal;
-    public float speed, health, Xp, damage;
+    public float speed, health, Xp, damage, damageMultiplier;
     private bool stunned = false;
     public int idNo;
 
@@ -35,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
         health = ER.setHealth(idNo);
         Xp = ER.setXp(idNo);
         damage = ER.setDamage(idNo);
+        damageMultiplier = ER.setDamageMultiplier(idNo);
     }
 
     void FixedUpdate()
@@ -77,11 +78,11 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
         }
         else if (other.gameObject.TryGetComponent<ShieldBehaviour>(out ShieldBehaviour shield))
         {
+            damage *= damageMultiplier;
             shield.shieldHealth(damage);
             player.experienceAdd(Xp);
             Destroy(gameObject);
         }
-        Debug.Log(other.gameObject);
     }
 
     private IEnumerator StunCoroutine(float duration)

@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject lvlUPS;
     public GameObject ArtifactChest;
+    public GameObject Shield;
     public static bool GameIsPaused = false;
     [SerializeField] public bool isEnabled = false;
 
@@ -27,6 +28,15 @@ public class UIManager : MonoBehaviour
         PlayerController.OnPlayerDeath -= EnableGameOverMEnu;
         PlayerController.OnPlayerLevelUp -= enableLvlUpMenu;
         ChestBehaviour.OnPlayerTrigger -= enableArtifactMenu;
+    }
+
+    public void EnableShield()
+    {
+        Shield.SetActive(true);
+    }
+    public void DisableShield()
+    {
+        Shield.SetActive(false);
     }
     public void EnableGameOverMEnu()
     {

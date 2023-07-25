@@ -115,6 +115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atk: {fileID: 11400000, guid: 8e6242d85ae2c034289dc1081019763d, type: 2}
   player: {fileID: 5254006792265222653, guid: 0905115abb4fd5d4482bef8db0178837, type: 3}
+  UI: {fileID: 5270444230323266675, guid: b0f92847bf82ed145a61c0c4c817044b, type: 3}
+  newParent: {fileID: 5254006792265222653, guid: 0905115abb4fd5d4482bef8db0178837, type: 3}
 --- !u!50 &7591711861524769794
 Rigidbody2D:
   serializedVersion: 4
