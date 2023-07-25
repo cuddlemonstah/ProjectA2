@@ -11,5 +11,6 @@ public class EnemyScriptObj : ScriptableObject
     public float damage;
     public float health;
     public float giveXp;
+    public float damageMultiplier;
 
 }

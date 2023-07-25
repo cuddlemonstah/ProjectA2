@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   attackName: Shield
+  skillHealth: 100
   skillDamage: 0
   splashDamage: 0
   force: 0
   rotationalSpeed: 0
   splashRadius: 0
-  timeBetweenFiring: 13
-  TimeBeforeItsGone: 3
+  timeBetweenFiring: 25
+  TimeBeforeItsGone: 5
   Anim: {fileID: 0}
   bullet: {fileID: 4642769257887963520, guid: c5ece0e4c641bd24ea09b2a10ebf511b, type: 3}
   abilityLvl: 1

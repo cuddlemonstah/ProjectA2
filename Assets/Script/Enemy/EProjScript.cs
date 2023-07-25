@@ -36,7 +36,13 @@ public class EProjScript : MonoBehaviour
             player.damageDealer(damage);
             Destroy(gameObject);
         }
-        else if(other.gameObject.CompareTag("Barrier")){
+        else if (other.gameObject.TryGetComponent<ShieldBehaviour>(out ShieldBehaviour shield))
+        {
+            shield.shieldHealth(damage);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Barrier"))
+        {
             Destroy(gameObject);
         }
     }

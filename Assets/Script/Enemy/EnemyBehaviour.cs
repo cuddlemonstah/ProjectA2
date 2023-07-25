@@ -9,6 +9,7 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
     Rigidbody2D rigid;
     HealthBar HP;
     Transform target;
+    PlayerController player;
 
     [SerializeField] EnemyScriptObj enemies;
     public EnemyReset ER;
@@ -21,6 +22,7 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        player = FindObjectOfType<PlayerController>();
         ER = FindObjectOfType<EnemyReset>();
         idNo = enemies.idNo;
         Invoke("set", 0.2f);
@@ -67,12 +69,19 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
+        if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController players))
         {
-            player.damageDealer(damage);
+            players.damageDealer(damage);
+            players.experienceAdd(Xp);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.TryGetComponent<ShieldBehaviour>(out ShieldBehaviour shield))
+        {
+            shield.shieldHealth(damage);
             player.experienceAdd(Xp);
             Destroy(gameObject);
         }
+        Debug.Log(other.gameObject);
     }
 
     private IEnumerator StunCoroutine(float duration)

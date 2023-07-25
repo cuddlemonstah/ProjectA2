@@ -212,7 +212,7 @@ public class AbilityBehaviourInLvl : MonoBehaviour
             var delay = new WaitForSeconds(atk[4].timeBetweenFiring);
             if (atk[4].activated == true && atk[4].abilityLvl == 1)
             {
-                Instantiate(atk[4].bullet, player.transform.position, Quaternion.identity, player);
+                Instantiate(atk[4].bullet, transform.position, Quaternion.identity, player);
                 yield return delay;
             }
             else
@@ -255,6 +255,11 @@ public class AbilityBehaviourInLvl : MonoBehaviour
         atk[3].splashRadius = 0.75f;
         atk[3].timeBetweenFiring = 18f;
         atk[3].TimeBeforeItsGone = 4f;
+
+        //?Shield Ability
+        atk[4].skillHealth = 100f;
+        atk[4].timeBetweenFiring = 25f;
+        atk[4].TimeBeforeItsGone = 5f;
     }
     public Vector3 randomPos()
     {

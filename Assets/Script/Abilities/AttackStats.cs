@@ -6,6 +6,7 @@ using UnityEngine;
 public class AttackStats : ScriptableObject
 {
     public string attackName;
+    public float skillHealth;
     public float skillDamage;
     public float splashDamage;
     public float force;

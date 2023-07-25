@@ -11,6 +11,7 @@ public class EnemyReset : MonoBehaviour
     float[] damage;
     float[] health;
     float[] Xp;
+    float[] damageMultiplier;
 
     void Start()
     {
@@ -19,12 +20,14 @@ public class EnemyReset : MonoBehaviour
         damage = new float[arraySize];
         health = new float[arraySize];
         Xp = new float[arraySize];
+        damageMultiplier = new float[arraySize];
         for (int i = 0; i < enemies.Length; i++)
         {
             GetStatXp(i, enemies[i].giveXp);
             GetStatSpeed(i, enemies[i].speed);
             GetStatDamage(i, enemies[i].damage);
             GetStatHealth(i, enemies[i].health);
+            GetStatDamage(i, enemies[i].damageMultiplier);
         }
     }
     private void GetStatSpeed(int index, float speed)
@@ -43,6 +46,10 @@ public class EnemyReset : MonoBehaviour
     {
         this.Xp[index] = Xp;
     }
+    private void GetStatDamageMultiplier(int index, float damageMultiplier)
+    {
+        this.damageMultiplier[index] = damageMultiplier;
+    }
 
     public float setSpeed(int idNo)
     {
@@ -59,6 +66,10 @@ public class EnemyReset : MonoBehaviour
     public float setXp(int idNo)
     {
         return Xp[idNo];
+    }
+    public float setDamageMultiplier(int idNo)
+    {
+        return damageMultiplier[idNo];
     }
 
 }
