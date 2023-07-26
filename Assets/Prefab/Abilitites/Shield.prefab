@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2959488130323877261}
   - component: {fileID: 5566836368397964448}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 1438112440633923274}
   - component: {fileID: 7225750273426644409}
   - component: {fileID: 3536644500597200833}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4921,7 +4921,7 @@ GameObject:
   - component: {fileID: 4749669274577587342}
   - component: {fileID: 243671632665420369}
   - component: {fileID: 7781295678956274813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shield Component
   m_TagString: Untagged
   m_Icon: {fileID: 0}

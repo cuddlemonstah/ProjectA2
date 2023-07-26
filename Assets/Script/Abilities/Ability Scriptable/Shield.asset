@@ -15,16 +15,16 @@ MonoBehaviour:
   attackName: Shield
   skillHealth: 100
   skillDamage: 0
-  splashDamage: 0
+  splashDamage: 100
   force: 0
   rotationalSpeed: 0
-  splashRadius: 0
+  splashRadius: 2.5
   timeBetweenFiring: 25
   TimeBeforeItsGone: 5
   Anim: {fileID: 0}
-  bullet: {fileID: 4642769257887963520, guid: c5ece0e4c641bd24ea09b2a10ebf511b, type: 3}
+  bullet: {fileID: 3600470660205998781, guid: c5ece0e4c641bd24ea09b2a10ebf511b, type: 3}
   abilityLvl: 1
-  explodes: 0
+  explodes: 1
   stuns: 0
   slows: 0
   poisons: 0

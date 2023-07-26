@@ -18,14 +18,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Player
   - Enemy
   - EnemyBullet
   - PlayerBullet
-  - ChildLayer
+  - Shield
   - 
   - 
   - 

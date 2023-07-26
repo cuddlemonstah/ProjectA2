@@ -68,9 +68,19 @@ public class ShieldBehaviour : MonoBehaviour
         {
             explosion.Play();
             Destroy(transform.GetChild(0).gameObject);
+            var hitEnemies = Physics2D.OverlapCircleAll(transform.position, atk.splashRadius);
+            foreach (var enemies in hitEnemies)
+            {
+                var enemy = enemies.GetComponent<EnemyBehaviour>();
+                var enemyProjectile = enemies.GetComponent<EProjScript>();
+                if (enemy)
+                {
+                    enemy.damageDealer(atk.splashDamage);
+                    Destroy(enemyProjectile);
+                }
+            }
             Destroy(this.gameObject, 0.5f);
         }
 
     }
-
 }

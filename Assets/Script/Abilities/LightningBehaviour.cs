@@ -47,8 +47,6 @@ public class LightningBehaviour : MonoBehaviour
                 }
 
             }
-            Debug.Log("explodes");
-            Debug.Log(damage);
         }
         if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy1)
         || other.CompareTag("Ground")
@@ -71,8 +69,6 @@ public class LightningBehaviour : MonoBehaviour
                 }
 
             }
-            Debug.Log("explodes");
-            Debug.Log(damage);
         }
         else if (other.gameObject.TryGetComponent<EnemyBehaviour>(out EnemyBehaviour enemy))
         {
