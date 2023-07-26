@@ -210,7 +210,7 @@ public class AbilityBehaviourInLvl : MonoBehaviour
         while (true)
         {
             var delay = new WaitForSeconds(atk[4].timeBetweenFiring);
-            if (atk[4].activated == true && atk[4].abilityLvl == 1)
+            if (atk[4].activated == true && atk[4].abilityLvl < 6)
             {
                 Instantiate(atk[4].bullet, transform.position, Quaternion.identity, player);
                 yield return delay;
@@ -260,6 +260,7 @@ public class AbilityBehaviourInLvl : MonoBehaviour
         atk[4].skillHealth = 100f;
         atk[4].timeBetweenFiring = 25f;
         atk[4].TimeBeforeItsGone = 5f;
+        atk[4].explodes = false;
     }
     public Vector3 randomPos()
     {

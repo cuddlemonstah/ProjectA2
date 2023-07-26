@@ -6,6 +6,7 @@ using UnityEngine;
 public class ShieldBehaviour : MonoBehaviour
 {
 
+    [SerializeField] private ParticleSystem explosion;
     public static event Action OnPlayerShield;
     public static event Action DisablePlayerShield;
 
@@ -24,23 +25,23 @@ public class ShieldBehaviour : MonoBehaviour
         if (shield != null)
         {
             StartCoroutine(EnableGameObject(atk.TimeBeforeItsGone));
-            UI();
-            Debug.Log(maxHealth);
+            UI(maxHealth);
         }
     }
 
     IEnumerator EnableGameObject(float seconds)
     {
         OnPlayerShield?.Invoke();
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(seconds);
         DisablePlayerShield?.Invoke();
-        Destroy(this.gameObject);
+        explosion.Play();
+        shieldDestroyed();
     }
 
-    private void UI()
+    private void UI(float maxHealth)
     {
-        shield.setHP(maxHealth);
         shield.setMaxHP(maxHealth);
+        shield.setHP(maxHealth);
 
     }
 
@@ -53,7 +54,23 @@ public class ShieldBehaviour : MonoBehaviour
         shield.setHP(health);
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            shieldDestroyed();
         }
     }
+    private void shieldDestroyed()
+    {
+        if (!atk.explodes)
+        {
+            Destroy(transform.GetChild(0).gameObject);
+            Destroy(this.gameObject, 0.5f);
+        }
+        else
+        {
+            explosion.Play();
+            Destroy(transform.GetChild(0).gameObject);
+            Destroy(this.gameObject, 0.5f);
+        }
+
+    }
+
 }

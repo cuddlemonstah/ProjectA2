@@ -149,6 +149,26 @@ public class ActivateAp : MonoBehaviour
         {
             Atks[5].abilityLvl += 1;
         }
+        if (Atks[5].abilityLvl == 2)
+        {
+            Atks[5].TimeBeforeItsGone = 6f;
+        }
+        if (Atks[4].abilityLvl == 3)
+        {
+            Atks[5].timeBetweenFiring = 20f;
+            Atks[5].TimeBeforeItsGone = 6.7f;
+        }
+        if (Atks[4].abilityLvl == 4)
+        {
+            Atks[5].timeBetweenFiring = 19f;
+            Atks[5].TimeBeforeItsGone = 7.5f;
+        }
+        if (Atks[4].abilityLvl == 5)
+        {
+            Atks[5].timeBetweenFiring = 18f;
+            Atks[5].TimeBeforeItsGone = 8f;
+            Atks[5].explodes = true;
+        }
         resume();
     }
 
