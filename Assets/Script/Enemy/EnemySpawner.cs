@@ -9,14 +9,22 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] enemyPrefab;
 
     [SerializeField] float time = 0f;
-    [SerializeField] float repeatRate = 1f;
+    [SerializeField] public static float repeatRate = 3f;
+
+    private float minutes, seconds;
     void Start()
     {
         InvokeRepeating("spawnEnemy", time, repeatRate);
+        InvokeRepeating("changeRepeatRate", 60f, 60f);
     }
 
     void Update()
     {
+        if (minutes == 7)
+        {
+            CancelInvoke("changeRepeatRate");
+        }
+        Debug.Log(repeatRate);
     }
 
     [System.Obsolete]
@@ -24,7 +32,25 @@ public class EnemySpawner : MonoBehaviour
     {
         int randomEnemy = Random.Range(0, enemyPrefab.Length);
         int randonSpawnPoint = Random.RandomRange(0, spawnPoints.Length);
-
         Instantiate(enemyPrefab[randomEnemy], spawnPoints[randonSpawnPoint].position, Quaternion.identity);
     }
+
+    void changeRepeatRate()
+    {
+        if (minutes <= 3)
+        {
+            repeatRate -= 0.5f;
+        }
+        else
+        {
+            repeatRate -= 0.3f;
+        }
+    }
+
+    public void setTimeMinutes(float minutes, float seconds)
+    {
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+
 }

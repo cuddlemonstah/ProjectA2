@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class TimeUI : MonoBehaviour
 {
-    public float timer;
+    EnemySpawner spawn;
+    private float timer;
+    public bool gameIsPaused;
     public Text text;
     private string firstMinute;
     private string secondMinute;
@@ -15,11 +17,21 @@ public class TimeUI : MonoBehaviour
 
     void Start()
     {
+        spawn = FindObjectOfType<EnemySpawner>();
         resetTimer();
     }
-    void Update()
+    void FixedUpdate()
     {
-        timer += Time.deltaTime;
+        if (!gameIsPaused)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            timer += Time.deltaTime;
+        }
+
         UpdateTimerDisplay(timer);
     }
     private void resetTimer()
@@ -37,6 +49,7 @@ public class TimeUI : MonoBehaviour
         firstSecond = currentTime[2].ToString();
         secondSecond = currentTime[3].ToString();
         text.text = firstMinute + secondMinute + separator + firstSecond + secondSecond;
+        spawn.setTimeMinutes(minutes, seconds);
     }
 
 }

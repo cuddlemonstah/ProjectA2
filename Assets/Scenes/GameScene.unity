@@ -647,6 +647,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2432401996025252709, guid: 90a7168a0a584be488b5317e8ba00129, type: 3}
+      propertyPath: timer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4810469331637089514, guid: 90a7168a0a584be488b5317e8ba00129, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

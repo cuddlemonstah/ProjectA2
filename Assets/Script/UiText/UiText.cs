@@ -13,8 +13,8 @@ public class UiText : MonoBehaviour
     void Update()
     {
         playerStats[0].text.text = "Level " + player.playerCurrentLvl + " / " + player.playerMaxLvl; // level
-        //playerStats[1].text.text = ": " + player.health + " / " + player.maxHP; // health
-        //playerStats[2].text.text = ": " + player.mana + " / " + player.maxMana; // mana
+        playerStats[1].text.text = ": " + player.health + " / " + player.maxHP; // health
+        playerStats[2].text.text = ": " + player.mana + " / " + player.maxMana; // mana
         playerStats[3].text.text = ": " + player.healthRegen; // health regen
         playerStats[4].text.text = ": " + player.manaRegen; // mana regen
         playerStats[5].text.text = ": " + player.playerDamage; // damage
