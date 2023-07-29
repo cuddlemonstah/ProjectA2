@@ -9,11 +9,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] enemyPrefab;
 
     [SerializeField] float time = 0f;
-    [SerializeField] public static float repeatRate = 3f;
+    [SerializeField] public float repeatRate;
 
     private float minutes, seconds;
     void Start()
     {
+        repeatRate = 3f;
         InvokeRepeating("spawnEnemy", time, repeatRate);
         InvokeRepeating("changeRepeatRate", 60f, 60f);
     }

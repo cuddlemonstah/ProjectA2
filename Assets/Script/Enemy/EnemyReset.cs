@@ -7,11 +7,13 @@ public class EnemyReset : MonoBehaviour
     [SerializeField]
     EnemyScriptObj[] enemies;
 
-    float[] speed;
-    float[] damage;
-    float[] health;
-    float[] Xp;
-    float[] damageMultiplier;
+    private float[] speed;
+    private float[] damage;
+    private float[] health;
+    private float[] Xp;
+    private float[] damageMultiplier;
+    private bool[] follows;
+    private bool[] explodes;
 
     void Start()
     {
@@ -21,6 +23,8 @@ public class EnemyReset : MonoBehaviour
         health = new float[arraySize];
         Xp = new float[arraySize];
         damageMultiplier = new float[arraySize];
+        follows = new bool[arraySize];
+        explodes = new bool[arraySize];
         for (int i = 0; i < enemies.Length; i++)
         {
             GetStatXp(i, enemies[i].giveXp);
@@ -28,6 +32,8 @@ public class EnemyReset : MonoBehaviour
             GetStatDamage(i, enemies[i].damage);
             GetStatHealth(i, enemies[i].health);
             GetStatDamageMultiplier(i, enemies[i].damageMultiplier);
+            GetBoolFollows(i, enemies[i].follows);
+            GetBoolExplodes(i, enemies[i].explodes);
         }
     }
     private void GetStatSpeed(int index, float speed)
@@ -50,6 +56,14 @@ public class EnemyReset : MonoBehaviour
     {
         this.damageMultiplier[index] = damageMultiplier;
     }
+    private void GetBoolFollows(int index, bool follows)
+    {
+        this.follows[index] = follows;
+    }
+    private void GetBoolExplodes(int index, bool explodes)
+    {
+        this.explodes[index] = explodes;
+    }
 
     public float setSpeed(int idNo)
     {
@@ -70,6 +84,15 @@ public class EnemyReset : MonoBehaviour
     public float setDamageMultiplier(int idNo)
     {
         return damageMultiplier[idNo];
+    }
+
+    public bool setBoolFollows(int idNo)
+    {
+        return follows[idNo];
+    }
+    public bool setBoolExplodes(int idNo)
+    {
+        return explodes[idNo];
     }
 
 }

@@ -59,12 +59,11 @@ public class ShieldBehaviour : MonoBehaviour
     }
     private void shieldDestroyed()
     {
-        if (!atk.explodes)
+        if (atk.explodes == false)
         {
-            Destroy(transform.GetChild(0).gameObject);
-            Destroy(this.gameObject, 0.5f);
+            Destroy(this.gameObject);
         }
-        else
+        else if (atk.explodes == true)
         {
             explosion.Play();
             Destroy(transform.GetChild(0).gameObject);

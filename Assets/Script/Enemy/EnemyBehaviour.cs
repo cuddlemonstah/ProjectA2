@@ -12,11 +12,15 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
     PlayerController player;
 
     [SerializeField] EnemyScriptObj enemies;
-    public EnemyReset ER;
+    EnemyReset ER;
+
+    //!Objects
+    public GameObject ExplosionHazard;
 
     float vertical, horizontal;
     public float speed, health, Xp, damage, damageMultiplier;
     private bool stunned = false;
+    private bool follows = false, explodes = false;
     public int idNo;
 
     void Awake()
@@ -25,9 +29,15 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
         player = FindObjectOfType<PlayerController>();
         ER = FindObjectOfType<EnemyReset>();
         idNo = enemies.idNo;
-        Invoke("set", 0.2f);
+        set();
         //!real
         target = GameObject.Find("Player").transform;
+        //! if the enemy do not follow
+        if (follows == false)
+        {
+            Vector3 direction = player.transform.position - transform.position;
+            rigid.velocity = new Vector2(direction.x, direction.y).normalized * speed;
+        }
     }
     void set()
     {
@@ -36,6 +46,8 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
         Xp = ER.setXp(idNo);
         damage = ER.setDamage(idNo);
         damageMultiplier = ER.setDamageMultiplier(idNo);
+        follows = ER.setBoolFollows(idNo);
+        explodes = ER.setBoolExplodes(idNo);
     }
 
     void FixedUpdate()
@@ -47,10 +59,17 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
         // Vector2 move = new Vector2(vertical, horizontal);
         // rigid.velocity = new Vector2(horizontal * speed, vertical * speed);
 
-        //!REALL
-        if (Vector2.Distance(transform.position, target.position) > enemies.infiniteDistance)
+        EnemyMovement(follows);
+    }
+
+    void EnemyMovement(bool follows)
+    {
+        if (follows == true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, target.position) > enemies.infiniteDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            }
         }
     }
     public void damageDealer(float damage)
@@ -58,6 +77,10 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
         health -= damage;
         if (health <= 0f)
         {
+            if (explodes == true)
+            {
+                Instantiate(ExplosionHazard, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
             var playerController = FindObjectOfType<PlayerController>();
             playerController.experienceAdd(Xp);
@@ -72,15 +95,28 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
     {
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController players))
         {
-            players.damageDealer(damage);
-            players.experienceAdd(Xp);
-            Destroy(gameObject);
+            enemyCollides(explodes, damage, Xp);
         }
         else if (other.gameObject.TryGetComponent<ShieldBehaviour>(out ShieldBehaviour shield))
         {
             damage *= damageMultiplier;
-            shield.shieldHealth(damage);
+            enemyCollides(explodes, damage, Xp);
+        }
+    }
+
+    private void enemyCollides(bool explodes, float damage, float Xp)
+    {
+        if (explodes == false)
+        {
+            player.damageDealer(damage);
             player.experienceAdd(Xp);
+            Destroy(gameObject);
+        }
+        else if (explodes == true)
+        {
+            player.damageDealer(damage);
+            player.experienceAdd(Xp);
+            Instantiate(ExplosionHazard, player.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
