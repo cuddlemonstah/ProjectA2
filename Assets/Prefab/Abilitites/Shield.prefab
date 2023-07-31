@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5566836368397964448}
   m_Layer: 10
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4920,7 +4920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4749669274577587342}
   - component: {fileID: 243671632665420369}
-  - component: {fileID: 7781295678956274813}
+  - component: {fileID: 4988391087139059337}
   m_Layer: 10
   m_Name: Shield Component
   m_TagString: Untagged
@@ -4993,7 +4993,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &7781295678956274813
+--- !u!58 &4988391087139059337
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

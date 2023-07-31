@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         Color OGcolor2;
 
         ColorUtility.TryParseHtmlString("#92C5D2", out Invicolor1);
-        ColorUtility.TryParseHtmlString("#A3D6AD", out OGcolor2);
+        ColorUtility.TryParseHtmlString("#FFF", out OGcolor2);
 
         GetComponent<Collider2D>().enabled = false;
         sprite.color = Invicolor1;
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
         for (int i = playerCurrentLvl; playerCurrentXp >= playerMaxXp; i++)
         {
             playerCurrentXp = 0f;
-            playerMaxXp *= 1.7f;
+            playerMaxXp *= 1.5f;
             playerCurrentLvl += 1;
             OnPlayerLevelUp?.Invoke();
         }

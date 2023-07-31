@@ -19,13 +19,13 @@ MonoBehaviour:
   force: 0
   rotationalSpeed: 0
   splashRadius: 2.5
-  timeBetweenFiring: 8
-  TimeBeforeItsGone: 3
+  timeBetweenFiring: 25
+  TimeBeforeItsGone: 5
   Anim: {fileID: 0}
   bullet: {fileID: 3600470660205998781, guid: c5ece0e4c641bd24ea09b2a10ebf511b, type: 3}
-  abilityLvl: 1
-  explodes: 1
+  abilityLvl: 0
+  explodes: 0
   stuns: 0
   slows: 0
   poisons: 0
-  activated: 1
+  activated: 0

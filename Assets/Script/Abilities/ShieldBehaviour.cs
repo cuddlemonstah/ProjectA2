@@ -34,8 +34,12 @@ public class ShieldBehaviour : MonoBehaviour
         OnPlayerShield?.Invoke();
         yield return new WaitForSeconds(seconds);
         DisablePlayerShield?.Invoke();
-        explosion.Play();
+        if (explosion != null)
+            explosion.Play();
         shieldDestroyed();
+        // Stop the particle system if needed
+        if (explosion != null)
+            explosion.Stop();
     }
 
     private void UI(float maxHealth)
@@ -59,13 +63,10 @@ public class ShieldBehaviour : MonoBehaviour
     }
     private void shieldDestroyed()
     {
-        if (atk.explodes == false)
+        if (atk.explodes)
         {
-            Destroy(this.gameObject);
-        }
-        else if (atk.explodes == true)
-        {
-            explosion.Play();
+            if (explosion != null)
+                explosion.Play();
             Destroy(transform.GetChild(0).gameObject);
             var hitEnemies = Physics2D.OverlapCircleAll(transform.position, atk.splashRadius);
             foreach (var enemies in hitEnemies)
@@ -76,9 +77,14 @@ public class ShieldBehaviour : MonoBehaviour
                 {
                     enemy.damageDealer(atk.splashDamage);
                     Destroy(enemyProjectile);
+                    break;
                 }
             }
             Destroy(this.gameObject, 0.5f);
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
 
     }
