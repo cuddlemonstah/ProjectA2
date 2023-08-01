@@ -36,7 +36,7 @@ public class EProjScript : MonoBehaviour
             player.damageDealer(damage);
             Destroy(gameObject);
         }
-        else if (other.gameObject.TryGetComponent<ShieldBehaviour>(out ShieldBehaviour shield))
+        else if (other.collider.transform.parent.TryGetComponent<ShieldBehaviour>(out ShieldBehaviour shield))
         {
             damage *= 3f;
             shield.shieldHealth(damage);

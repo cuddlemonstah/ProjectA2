@@ -83,42 +83,49 @@ public class EnemyBehaviour : MonoBehaviour, ICCable
                 Instantiate(ExplosionHazard, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
-            var playerController = FindObjectOfType<PlayerController>();
-            playerController.experienceAdd(Xp);
-            for (int i = 1; i < playerController.playerCurrentLvl; i++)
-            {
-                Xp *= 2.5f;
-            }
+
+            // Calculate the total experience points and add it to the player
+            player.experienceAdd(Xp);
+            Xp *= Mathf.Pow(2.5f, player.playerCurrentLvl - 1);
         }
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
         //! If collided with Player
-        if (other.collider.TryGetComponent<PlayerController>(out PlayerController players))
+        if (other.collider.GetComponent<PlayerController>())
         {
             if (explodes)
             {
                 Instantiate(ExplosionHazard, player.transform.position, Quaternion.identity);
             }
 
-            player.damageDealer(damage);
-            player.experienceAdd(Xp);
+            var playerController = other.collider.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.damageDealer(damage);
+                playerController.experienceAdd(Xp);
+            }
             Destroy(gameObject);
-            Debug.Log("Player");
         }
         //! If collided with Shield
-        else if (other.collider.transform.parent.TryGetComponent<ShieldBehaviour>(out ShieldBehaviour shield))
+        else if (other.collider.transform.parent != null && other.collider.transform.parent.TryGetComponent<ShieldBehaviour>(out ShieldBehaviour shield))
         {
             if (explodes)
             {
-                Instantiate(ExplosionHazard, player.transform.position, Quaternion.identity);
+                Instantiate(ExplosionHazard, other.transform.position, Quaternion.identity);
             }
-
             shield.shieldHealth(damage);
-            player.experienceAdd(Xp);
+            var playerController = FindObjectOfType<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.experienceAdd(Xp);
+            }
             Destroy(gameObject);
-            Debug.Log("Shield");
+        }
+        else if (other.gameObject.CompareTag("Barrier"))
+        {
+            Destroy(gameObject);
         }
     }
 
